@@ -12,7 +12,7 @@ class ThrusterControlKeyboard(Node):
         self.publisher_right_ = self.create_publisher(Float64, 'thruster_right/speed', 10)
         self.active_speed = Float64()
         self.active_speed.data = 0.5
-        self.stop_speed = Float64
+        self.stop_speed = Float64()
         self.stop_speed.data = 0.0
 
         self.pressed_keys = set()
@@ -23,7 +23,9 @@ class ThrusterControlKeyboard(Node):
             on_release=self.on_release
         )
         self.listener.start()
-
+    def publish_both_speeds(self, speed):
+        self.publisher_right_.publish(self.active_speed)
+        self.publisher_left_.publish(self.active_speed)
     def on_press(self, key):
 
             if key in {keyboard.Key.up, keyboard.Key.down, keyboard.Key.left, keyboard.Key.right}:
@@ -37,11 +39,12 @@ class ThrusterControlKeyboard(Node):
                 elif key == keyboard.Key.up:
                      self.get_logger().info("up arrow pressed")
                      self.active_speed += .1
-                     self.publisher_right_.publish(self.active_speed)
+                     self.publish_both_speeds(self.active_speed)
+                     
                 elif key == keyboard.Key.down:
                      self.get_logger().info("down arrow pressed")
-                     self.active_speed += .1
-                     self.publisher_right_.publish(self.active_speed)
+                     self.active_speed -= .1
+                     self.publish_both_speeds(self.active_speed)
 
 
     def on_release(self, key):
@@ -55,6 +58,10 @@ class ThrusterControlKeyboard(Node):
                      self.get_logger().info("Right arrow released")
                      self.publisher_right_.publish(self.stop_speed)
 
+    
+
+
+
 def main(args=None):
     rclpy.init(args=args)
     thruster_control_keyboard = ThrusterControlKeyboard()
@@ -66,3 +73,6 @@ def main(args=None):
       thruster_control_keyboard.destroy_node()
       rclpy.shutdown()
      
+
+if __name__ == '__main__':
+    main()
