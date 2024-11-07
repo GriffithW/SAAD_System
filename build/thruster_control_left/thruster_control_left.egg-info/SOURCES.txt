@@ -1,0 +1,14 @@
+package.xml
+setup.cfg
+setup.py
+../../build/thruster_control_left/thruster_control_left.egg-info/PKG-INFO
+../../build/thruster_control_left/thruster_control_left.egg-info/SOURCES.txt
+../../build/thruster_control_left/thruster_control_left.egg-info/dependency_links.txt
+../../build/thruster_control_left/thruster_control_left.egg-info/requires.txt
+../../build/thruster_control_left/thruster_control_left.egg-info/top_level.txt
+../../build/thruster_control_left/thruster_control_left.egg-info/zip-safe
+resource/thruster_control_left
+test/test_copyright.py
+test/test_flake8.py
+test/test_pep257.py
+thruster_control_left/__init__.py

@@ -1,0 +1,1 @@
+Invoking command in '/home/griffithw/saad_sys/build/saad_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/griffithw/saad_sys/install/thruster_control_left:/home/griffithw/saad_sys/install/thruster_control:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/griffithw/saad_sys/build/saad_controller -- -j4 -l4

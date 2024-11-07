@@ -1,0 +1,30 @@
+running egg_info
+creating ../../build/thruster_control_left/thruster_control_left.egg-info
+writing ../../build/thruster_control_left/thruster_control_left.egg-info/PKG-INFO
+writing dependency_links to ../../build/thruster_control_left/thruster_control_left.egg-info/dependency_links.txt
+writing requirements to ../../build/thruster_control_left/thruster_control_left.egg-info/requires.txt
+writing top-level names to ../../build/thruster_control_left/thruster_control_left.egg-info/top_level.txt
+writing manifest file '../../build/thruster_control_left/thruster_control_left.egg-info/SOURCES.txt'
+reading manifest file '../../build/thruster_control_left/thruster_control_left.egg-info/SOURCES.txt'
+writing manifest file '../../build/thruster_control_left/thruster_control_left.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/griffithw/saad_sys/build/thruster_control_left/build
+creating /home/griffithw/saad_sys/build/thruster_control_left/build/lib
+creating /home/griffithw/saad_sys/build/thruster_control_left/build/lib/thruster_control_left
+copying thruster_control_left/__init__.py -> /home/griffithw/saad_sys/build/thruster_control_left/build/lib/thruster_control_left
+running install
+running install_lib
+creating /home/griffithw/saad_sys/install/thruster_control_left/lib/python3.12/site-packages/thruster_control_left
+copying /home/griffithw/saad_sys/build/thruster_control_left/build/lib/thruster_control_left/__init__.py -> /home/griffithw/saad_sys/install/thruster_control_left/lib/python3.12/site-packages/thruster_control_left
+byte-compiling /home/griffithw/saad_sys/install/thruster_control_left/lib/python3.12/site-packages/thruster_control_left/__init__.py to __init__.cpython-312.pyc
+running install_data
+creating /home/griffithw/saad_sys/install/thruster_control_left/share/ament_index
+creating /home/griffithw/saad_sys/install/thruster_control_left/share/ament_index/resource_index
+creating /home/griffithw/saad_sys/install/thruster_control_left/share/ament_index/resource_index/packages
+copying resource/thruster_control_left -> /home/griffithw/saad_sys/install/thruster_control_left/share/ament_index/resource_index/packages
+copying package.xml -> /home/griffithw/saad_sys/install/thruster_control_left/share/thruster_control_left
+running install_egg_info
+Copying ../../build/thruster_control_left/thruster_control_left.egg-info to /home/griffithw/saad_sys/install/thruster_control_left/lib/python3.12/site-packages/thruster_control_left-0.0.0-py3.12.egg-info
+running install_scripts
+writing list of installed files to '/home/griffithw/saad_sys/build/thruster_control_left/install.log'

@@ -1,0 +1,66 @@
+[0.063s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'list', '-p', '--base-paths', '/home/griffithw/saad_sys']
+[0.063s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='list', build_base='build', ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['/home/griffithw/saad_sys'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], topological_order=False, names_only=False, paths_only=True, topological_graph=False, topological_graph_dot=False, topological_graph_density=False, topological_graph_legend=False, topological_graph_dot_cluster=False, topological_graph_dot_include_skipped=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x788acf47b4a0>, verb_extension=<colcon_package_information.verb.list.ListVerb object at 0x788acf5a98b0>, main=<bound method ListVerb.main of <colcon_package_information.verb.list.ListVerb object at 0x788acf5a98b0>>, mixin_verb=('list',))
+[0.088s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.088s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.088s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.088s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.088s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.088s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/griffithw/saad_sys'
+[0.088s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys) by extensions ['ignore', 'ignore_ament_install']
+[0.088s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys) by extension 'ignore'
+[0.088s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys) by extension 'ignore_ament_install'
+[0.088s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys) by extensions ['colcon_pkg']
+[0.088s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys) by extension 'colcon_pkg'
+[0.088s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys) by extensions ['colcon_meta']
+[0.088s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys) by extension 'colcon_meta'
+[0.088s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys) by extensions ['ros']
+[0.088s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys) by extension 'ros'
+[0.107s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys) by extensions ['cmake', 'python']
+[0.107s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys) by extension 'cmake'
+[0.107s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys) by extension 'python'
+[0.107s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys) by extensions ['python_setup_py']
+[0.107s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys) by extension 'python_setup_py'
+[0.107s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/build) by extensions ['ignore', 'ignore_ament_install']
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/build) by extension 'ignore'
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/build) ignored
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/install) by extensions ['ignore', 'ignore_ament_install']
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/install) by extension 'ignore'
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/install) ignored
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/log) by extensions ['ignore', 'ignore_ament_install']
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/log) by extension 'ignore'
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/log) ignored
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src) by extensions ['ignore', 'ignore_ament_install']
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src) by extension 'ignore'
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src) by extension 'ignore_ament_install'
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src) by extensions ['colcon_pkg']
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src) by extension 'colcon_pkg'
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src) by extensions ['colcon_meta']
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src) by extension 'colcon_meta'
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src) by extensions ['ros']
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src) by extension 'ros'
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src) by extensions ['cmake', 'python']
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src) by extension 'cmake'
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src) by extension 'python'
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src) by extensions ['python_setup_py']
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src) by extension 'python_setup_py'
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src/saad_controller) by extensions ['ignore', 'ignore_ament_install']
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src/saad_controller) by extension 'ignore'
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src/saad_controller) by extension 'ignore_ament_install'
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src/saad_controller) by extensions ['colcon_pkg']
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src/saad_controller) by extension 'colcon_pkg'
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src/saad_controller) by extensions ['colcon_meta']
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src/saad_controller) by extension 'colcon_meta'
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src/saad_controller) by extensions ['ros']
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src/saad_controller) by extension 'ros'
+[0.118s] DEBUG:colcon.colcon_core.package_identification:Package '/home/griffithw/saad_sys/src/saad_controller' with type 'ros.ament_cmake' and name 'saad_controller'
+[0.118s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src/thruster_control) by extensions ['ignore', 'ignore_ament_install']
+[0.118s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src/thruster_control) by extension 'ignore'
+[0.118s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src/thruster_control) by extension 'ignore_ament_install'
+[0.118s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src/thruster_control) by extensions ['colcon_pkg']
+[0.118s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src/thruster_control) by extension 'colcon_pkg'
+[0.118s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src/thruster_control) by extensions ['colcon_meta']
+[0.118s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src/thruster_control) by extension 'colcon_meta'
+[0.118s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src/thruster_control) by extensions ['ros']
+[0.118s] Level 1:colcon.colcon_core.package_identification:_identify(/home/griffithw/saad_sys/src/thruster_control) by extension 'ros'
+[0.119s] DEBUG:colcon.colcon_core.package_identification:Package '/home/griffithw/saad_sys/src/thruster_control' with type 'ros.ament_python' and name 'thruster_control'
+[0.119s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults

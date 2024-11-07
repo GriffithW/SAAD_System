@@ -1,0 +1,6 @@
+source;share/thruster_control_left/hook/pythonpath.ps1
+source;share/thruster_control_left/hook/pythonpath.dsv
+source;share/thruster_control_left/hook/pythonpath.sh
+source;share/thruster_control_left/hook/ament_prefix_path.ps1
+source;share/thruster_control_left/hook/ament_prefix_path.dsv
+source;share/thruster_control_left/hook/ament_prefix_path.sh
