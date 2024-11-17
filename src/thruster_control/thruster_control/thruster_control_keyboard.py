@@ -27,24 +27,23 @@ class ThrusterControlKeyboard(Node):
         self.publisher_right_.publish(self.active_speed)
         self.publisher_left_.publish(self.active_speed)
     def on_press(self, key):
+        if key in {keyboard.Key.up, keyboard.Key.down, keyboard.Key.left, keyboard.Key.right}:
+            self.pressed_keys.add(key)
+            if key == keyboard.Key.left:
+                self.get_logger().info("Left arrow pressed")
+                self.publisher_left_.publish(self.active_speed)
+            elif key == keyboard.Key.right:
+                self.get_logger().info("Right arrow pressed")
+                self.publisher_right_.publish(self.active_speed)
+            elif key == keyboard.Key.up:
+                self.get_logger().info("up arrow pressed")
+                self.active_speed.data += 0.1  # Modify the `data` attribute
+                self.publish_both_speeds(self.active_speed)
+            elif key == keyboard.Key.down:
+                self.get_logger().info("down arrow pressed")
+                self.active_speed.data -= 0.1  # Modify the `data` attribute
+                self.publish_both_speeds(self.active_speed)
 
-            if key in {keyboard.Key.up, keyboard.Key.down, keyboard.Key.left, keyboard.Key.right}:
-                self.pressed_keys.add(key)
-                if key == keyboard.Key.left:
-                     self.get_logger().info("Left arrow pressed")
-                     self.publisher_left_.publish(self.active_speed)
-                elif key == keyboard.Key.right:
-                     self.get_logger().info("Right arrow pressed")
-                     self.publisher_right_.publish(self.active_speed)
-                elif key == keyboard.Key.up:
-                     self.get_logger().info("up arrow pressed")
-                     self.active_speed += .1
-                     self.publish_both_speeds(self.active_speed)
-                     
-                elif key == keyboard.Key.down:
-                     self.get_logger().info("down arrow pressed")
-                     self.active_speed -= .1
-                     self.publish_both_speeds(self.active_speed)
 
 
     def on_release(self, key):
