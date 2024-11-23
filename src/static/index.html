@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thruster Control GUI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+        }
+        .button {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 25px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .slider-container {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Thruster Control</h1>
+    <div>
+        <button class="button" onclick="sendCommand('forward')">Forward</button>
+    </div>
+    <div>
+        <button class="button" onclick="sendCommand('left')">Left</button>
+        <button class="button" onclick="sendCommand('stop')">Stop</button>
+        <button class="button" onclick="sendCommand('right')">Right</button>
+    </div>
+    <div>
+        <button class="button" onclick="sendCommand('backward')">Backward</button>
+    </div>
+    <div class="slider-container">
+        <label for="speed">Speed: </label>
+        <input type="range" id="speed" min="0" max="100" value="50" onchange="setSpeed(this.value)">
+        <span id="speedValue">50</span>
+    </div>
+
+    <script>
+        // Base URL for the Raspberry Pi backend, I am now sure if this is the right address have to double check
+        const piUrl = 'http://70.190.180.74:5000';
+
+        function sendCommand(command) {
+            fetch(`${piUrl}/command`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ command: command })
+            }).then(response => {
+                if (response.ok) {
+                    console.log('Command sent:', command);
+                } else {
+                    console.error('Error sending command:', command);
+                }
+            }).catch(error => console.error('Fetch error:', error));
+        }
+
+        function setSpeed(speed) {
+            document.getElementById('speedValue').innerText = speed;
+            fetch(`${piUrl}/speed`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ speed: speed })
+            }).then(response => {
+                if (response.ok) {
+                    console.log('Speed set to:', speed);
+                } else {
+                    console.error('Error setting speed:', speed);
+                }
+            }).catch(error => console.error('Fetch error:', error));
+        }
+    </script>
+</body>
+</html>
