@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Message</title>
+    <script>
+        function updateMessage() {
+            fetch('/get_message')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the message display
+                    document.getElementById('message').innerText = data.message;
+                })
+                .catch(error => console.error('Error fetching message:', error));
+        }
+
+        // Set up periodic updates every 2 seconds
+        setInterval(updateMessage, 2000);
+
+        // Fetch the message immediately when the page loads
+        window.onload = updateMessage;
+    </script>
+</head>
+<body>
+    <h1>Dynamic Message</h1>
+    <p id="message">Loading...</p>
+    <form id="update-form" onsubmit="submitMessage(event)">
+        <input type="text" id="user-input" placeholder="Enter a new message" required>
+        <button type="submit">Update Message</button>
+    </form>
+    <script>
+        function submitMessage(event) {
+            event.preventDefault(); // Prevent form reload
+            const userInput = document.getElementById('user-input').value;
+
+            // Send user input to the server
+            fetch('/update', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ user_input: userInput }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+                document.getElementById('user-input').value = ''; // Clear input field
+            })
+            .catch(error => console.error('Error updating message:', error));
+        }
+    </script>
+</body>
+</html>

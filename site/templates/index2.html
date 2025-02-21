@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thruster Control GUI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+        }
+        .button {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 25px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .slider-container {
+            margin: 20px;
+        }
+    </style>
+    <script>
+        function updateMessage() {
+            fetch('/get_message')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the message display
+                    document.getElementById('message').innerText = data.message;
+                })
+                .catch(error => console.error('Error fetching message:', error));
+                
+            fetch('/get_target_coordinates')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the message display
+                    document.getElementById('target_coordinates').innerText = data.target_coordinates;
+                })
+                .catch(error => console.error('Error fetching message:', error));
+        }
+
+        // Set up periodic updates every 2 seconds
+        setInterval(updateMessage, 5000);
+
+        // Fetch the message immediately when the page loads
+        window.onload = updateMessage;
+    </script>
+</head>
+<body>
+    <h1>Thruster Control</h1>
+    <p>Current Command:</p>
+    <p id="message">Loading...</p>
+    <p>Current Coordinates:</p>
+    <p id="target_coordinates">Loading...</p>
+    <!-- Rounded switch -->
+        <button class="button" onclick="sendCommand('forward')">Forward</button>
+    </div>
+    <div>
+        <button class="button" onclick="sendCommand('left')">Left</button>
+        <button class="button" onclick="sendCommand('stop')">Stop</button>
+        <button class="button" onclick="sendCommand('right')">Right</button>
+    </div>
+    <div>
+        <button class="button" onclick="sendCommand('backward')">Backward</button>
+    </div>
+    <div class="slider-container">
+        <label for="speedLeft">Speed: </label>
+        <input type="range" id="speedLeft" min="-100" max="100" value="0" onchange="setSpeedRight(this.value)">
+        <span id="speedValueLeft">0</span>
+    </div>
+    <div class="slider-container">
+        <label for="speedRight">Speed: </label>
+        <input type="range" id="speedRight" min="-100" max="100" value="0" onchange="setSpeedLeft(this.value)">
+        <span id="speedValueRight">0</span>
+    </div>
+    <div class="coord-container">
+        <label for="coords">Set Target Coordinates: </label>
+        <form id="update-form" onsubmit="setCoordinates(event)">
+        <input type="text" id="user-input" placeholder="Enter a new message" required>
+        <button type="setCoordinates">Set Coordinates</button>
+    </form>
+    </div>
+
+    <script>
+        function sendCommand(command) {
+            fetch('/command', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ command: command })
+            }).then(response => {
+                if (response.ok) {
+                    console.log('Command sent:', command);
+                } else {
+                    console.error('Error sending command:', command);
+                }
+            }).catch(error => console.error('Fetch error:', error));
+        }
+
+        function setSpeedLeft(speed) {
+            document.getElementById('speedValueLeft').innerText = speed;
+            fetch('/speedLeft', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ speed: speed })
+            }).then(response => {
+                if (response.ok) {
+                    console.log('Speed Left set to:', speed);
+                } else {
+                    console.error('Error setting speed:', speed);
+                }
+            }).catch(error => console.error('Fetch error:', error));
+        }
+        
+        function setSpeedLeft(speed) {
+            document.getElementById('speedValueRight').innerText = speed;
+            fetch('/speedRight', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ speed: speed })
+            }).then(response => {
+                if (response.ok) {
+                    console.log('Speed Right set to:', speed);
+                } else {
+                    console.error('Error setting speed:', speed);
+                }
+            }).catch(error => console.error('Fetch error:', error));
+        }
+        
+        function setCoordinates() {
+            event.preventDefault(); // Prevent form reload
+            const userInput = document.getElementById('user-input').value;
+
+            // Send user input to the server
+            fetch('/set_coordinates', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ user_input: userInput }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+                document.getElementById('user-input').value = ''; // Clear input field
+            })
+            .catch(error => console.error('Error updating message:', error));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+def thruster_control(xd, yd, gains, x_in, y_in, theta_in):
+    minThrust = 0.05
+    midThrust = 0.075
+    maxThrust = 0.10
+
+    theta_d = theta_in
+
+    alpha = theta_d 
+
+    if alpha % (2.0 * np.pi) > np.pi:
+        alphamag = 2.0 * np.pi - alpha % (2.0 * np.pi)
+    else:
+        alphamag = alpha % (2.0 * np.pi)
+
+    if np.sin(alpha) >= 0:
+        theta_des = theta_in - alphamag
+    else:
+        theta_des = theta_in + alphamag
+
+    rdiff = np.sqrt((xd - x_in) ** 2.0 + (yd - y_in) ** 2.0)
+
+    thetadiff = theta_des - theta_in
+
+    theta_go = gains[4]
+    if abs(thetadiff) > theta_go:
+        thrust = 0.0
+    else:
+        thrust = theta_go - abs(thetadiff) + rdiff * gains[7] 
+
+    f_u = np.dot(np.array([[gains[0], 0.0], [0.0, gains[1]]]), np.array([thrust, thetadiff]))
+    g_u = np.array([0, 0])
+
+    g_u = np.dot(np.array([[1.0 / 2.0, -1.0 / 2.0], [1.0 / 2.0, 1.0 / 2.0]]), f_u)
+
+    g_u[0] = np.sign(g_u[0]) * 10 if abs(g_u[0]) > 10 else g_u[0]
+    g_u[1] = np.sign(g_u[1]) * 10 if abs(g_u[1]) > 10 else g_u[1]
+
+    pwm = g_u * (maxThrust-midThrust)/10.0 + np.array([midThrust, midThrust])
+
+    
+    # Normalize PWM values between 0 and 1
+    # pwm = (pwm - midThrust) / (maxThrust - midThrust)  # Map [7.2, 9.7] to [0, 1]
+    # pwm = np.clip(pwm, 0.0, 1.0) / 10  # Clamp the values to [0, 1]
+
+
+    # pwm = pwm * (maxThrust - minThrust) - minThrust
+
+    if(abs(pwm[0] - midThrust) < 0.01):
+        pwm[0] = 0.01
+
+    if(abs(pwm[1] - midThrust) < 0.01):
+        pwm[1] = 0.01
+
+    return pwm

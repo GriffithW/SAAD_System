@@ -1,0 +1,456 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thruster Control GUI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+        }
+        .button {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 25px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .slider-container {
+            margin: 20px;
+        }
+    </style>
+    <script>
+        const commands = {
+            LEFT: "left",
+            FORWARD: "forward",
+            RIGHT: "right",
+            BACKWARD: "backwards",
+            STOP: "stop"
+        };
+        
+        target_coordinates = "NA";
+        lastCommand = commands.STOP;
+        basicSpeed = 0;
+        speedRight = 0;
+        speedLeft = 0;
+        manualOverrideValue = false;
+        onLandValue = false;
+        currLat = 0;
+        currLong = 0;
+        targetLat = 0;
+        targetLong = 0;
+        
+        function updateFields() {   
+            fetch('/get_curr_lat')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the message display
+                    currLat = data.currLat;
+                })
+                .catch(error => console.error('Error fetching message:', error));
+                
+            fetch('/get_curr_long')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the message display
+                    currLong = data.currLong;
+                })
+                .catch(error => console.error('Error fetching message:', error));
+                
+            fetch('/get_target_lat')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the message display
+                    targetLat = data.targetLat;
+                })
+                .catch(error => console.error('Error fetching message:', error));
+                
+            fetch('/get_target_long')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the message display
+                    targetLong = data.targetLong;
+                })
+                .catch(error => console.error('Error fetching message:', error));
+                     
+            fetch('/get_speed_right')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the message display
+                    speedRight = data.speedRight;
+                })
+                .catch(error => console.error('Error fetching message:', error));
+                
+            fetch('/get_speed_left')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the message display
+                    speedLeft = data.speedLeft;
+                })
+                .catch(error => console.error('Error fetching message:', error));
+                
+            fetch('/get_target_coordinates')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the message display
+                    target_coordinates = data.target_coordinates;
+                })
+                .catch(error => console.error('Error fetching message:', error));
+        
+            fetch('/get_command')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the message display
+                    lastCommand = data.command;
+                })
+                .catch(error => console.error('Error fetching message:', error));
+                
+            fetch('/get_basic_speed')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the message display
+                    basicSpeed = data.basicSpeed;
+                })
+                .catch(error => console.error('Error fetching message:', error));
+                
+            fetch('/get_manual_override')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the message display
+                    manualOverrideValue = data.manualOverride;
+                })
+                .catch(error => console.error('Error fetching message:', error));
+                
+            fetch('/get_on_land')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the message display
+                    onLandValue = data.onLand;
+                })
+                .catch(error => console.error('Error fetching message:', error));
+        
+            loadVisuals();
+        }
+
+        // Set up periodic updates every 2 seconds
+        setInterval(updateFields, 1000);
+
+        // Fetch the message immediately when the page loads
+        window.onload = updateFields;
+    </script>
+</head>
+<body>
+    <h1>Thruster Control</h1>
+    <div class="curr-coord-container">
+        <p>Current Coordinates:</p>
+        <span id="curr_lat">Loading..</span><span>, </span></span><span id="curr_long"></span>
+    </div>
+    <div class="target-coord-container">
+        <label for="coords">Set Target Coordinates: </label>
+        <form id="update-form" onsubmit="setCoordinates(event)">
+            <input type="text" id="user-input" placeholder="Enter a new message" required>
+            <button type="setCoordinates">Set Coordinates</button>
+        </form>
+        <p>Current Target Coordinates:</p>
+        <span id="curr_target_lat">0</span><span>, </span></span><span id="curr_target_long">0</span>
+    </div>
+    <div class="manual-override">
+        <p>Manual Override?</p>
+        <label class="switch">
+            <input type="checkbox" id="manualOverride" onclick="manualOverride()">
+            <span class="slider round"></span>
+        </label>
+    </div>
+    <div class="on-land">
+        <p>On land?</p>
+        <label class="switch">
+            <input type="checkbox" id="onLand" onclick="onLand()">
+            <span class="slider round"></span>
+        </label>
+    </div>
+    <div class="slider-container">
+        <label for="basicSpeedLeft">Basic Controls Speed: </label>
+        <input type="range" id="basicControlsSpeed" min="0" max="100" value="0" onchange="setBasicSpeed(this.value)">
+        <span id="basisControlSpeedValue">0</span>
+    </div>
+    <div>
+        <button class="button" onclick="sendCommand('forward')">Forward</button>
+    </div>
+    <div>
+        <button class="button" onclick="sendCommand('left')">Left</button>
+        <button class="button" onclick="sendCommand('stop')">Stop</button>
+        <button class="button" onclick="sendCommand('right')">Right</button>
+    </div>
+    <div>
+        <button class="button" onclick="sendCommand('backward')">Backward</button>
+    </div>
+    <div class="slider-container">
+        <label for="speedLeft">Speed Left: </label>
+        <input type="range" id="speedLeft" min="-100" max="100" value="0" onchange="updateSpeedLeft(this.value)">
+        <span id="speedValueLeft">0</span>
+        <label style="margin-left: 50px;" for="speedRight">Speed Right: </label>
+        <input type="range" id="speedRight" min="-100" max="100" value="0" onchange="updateSpeedRight(this.value)">
+        <span id="speedValueRight">0</span>
+    </div>
+
+    <script>
+        function manualOverride() {
+            console.log("Manual Override value: ", document.getElementById('manualOverride').checked);
+            fetch('/manualOverride', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ value: document.getElementById('manualOverride').checked })
+            }).then(response => {
+                if (response.ok) {
+                    console.log('Override: ', document.getElementById('manualOverride').checked);
+                } else {
+                    console.error('Override: ', document.getElementById('manualOverride').checked);
+                }
+            }).catch(error => console.error('Fetch error:', error));
+            
+            manualOverrideValue = document.getElementById('manualOverride').checked;
+        }
+        
+        function onLand() {
+            console.log("Manual Override value: ", document.getElementById('onLand').checked);
+            fetch('/onLand', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ value: document.getElementById('onLand').checked })
+            }).then(response => {
+                if (response.ok) {
+                    console.log('On Land: ', document.getElementById('onLand').checked);
+                } else {
+                    console.error('On Land: ', document.getElementById('onLand').checked);
+                }
+            }).catch(error => console.error('Fetch error:', error));
+            
+            onLandValue = document.getElementById('onLand').checked;
+        }
+        
+        function sendCommand(command) {
+            console.log('Command received', command);
+            switch(command) {
+                case 'left':
+                    lastCommand = commands.LEFT;
+                break;
+                case 'forward':
+                    lastCommand = commands.FORWARD;
+                break;
+                case 'right':
+                    lastCommand = commands.RIGHT;
+                break;
+                case 'backward':
+                    lastCommand = commands.BACKWARD;
+                break;
+                case 'stop':
+                    lastCommand = commands.STOP;
+                break;
+            }
+            
+            fetch('/command', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ command: command })
+            }).then(response => {
+                if (response.ok) {
+                    console.log('Commanded: ', command);
+                } else {
+                    console.error('Commanded: ', command);
+                }
+            }).catch(error => console.error('Fetch error:', error));
+            
+            updateBasicSpeed(basicSpeed, lastCommand);
+            
+            loadVisuals();
+        }
+        
+        function setBasicSpeed(speed) {
+            fetch('/basicSpeed', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ basicSpeed: speed })
+            }).then(response => {
+                if (response.ok) {
+                    console.log('Commanded: ', speed);
+                } else {
+                    console.error('Basic Speed: ', speed);
+                }
+            }).catch(error => console.error('Fetch error:', error));
+            
+            updateBasicSpeed(speed, lastCommand);
+            document.getElementById('basisControlSpeedValue').innerText = basicSpeed;
+            loadVisuals();
+        }
+        
+        function updateBasicSpeed(speed, command) {
+            basicSpeed = speed;
+            lastCommand = command;
+            
+            switch (lastCommand) {
+                case commands.RIGHT:
+                    rightSpeed = -basicSpeed;
+                    leftSpeed =   basicSpeed;
+                break;
+                case commands.LEFT:
+                    rightSpeed =  basicSpeed;
+                    leftSpeed =  -basicSpeed;
+                break;
+                case commands.FORWARD:
+                    rightSpeed =  basicSpeed;
+                    leftSpeed =   basicSpeed;
+                break;
+                case commands.BACKWARD:
+                    rightSpeed = -basicSpeed;
+                    leftSpeed =  -basicSpeed;
+                break;
+                case commands.STOP:
+                    rightSpeed = 0;
+                    leftSpeed = 0;
+                break;
+            }
+            setSpeedLeft(leftSpeed);
+            setSpeedRight(rightSpeed);
+        }
+        
+        function updateSpeedLeft(speed) {
+            speedLeft = speed;
+            setSpeedLeft(speedLeft);
+            loadVisuals();
+        }
+        
+        function updateSpeedRight(speed) {
+            speedRight = speed;
+            setSpeedRight(speedRight);
+            loadVisuals();
+        }
+        
+        function setSpeedLeft(speed) {
+            speedLeft = speed;
+            fetch('/speedLeft', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ speedLeft: speedLeft })
+            }).then(response => {
+                if (response.ok) {
+                    console.log('Speed Left set to:', speedLeft);
+                } else {
+                    console.error('Error setting speed:', speed);
+                }
+            }).catch(error => console.error('Fetch error:', error));
+        }
+        
+        function setSpeedRight(speed) {
+            speedRight = speed;
+            fetch('/speedRight', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ speedRight: speedRight })
+            }).then(response => {
+                if (response.ok) {
+                    console.log('Speed Right set to:', speedRight);
+                } else {
+                    console.error('Error setting speed:', speed);
+                }
+            }).catch(error => console.error('Fetch error:', error));
+        }
+        
+        function setCoordinates() {
+            event.preventDefault(); // Prevent form reload
+            const userInput = document.getElementById('user-input').value;
+
+            // Send user input to the server
+            fetch('/set_coordinates', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ user_input: userInput }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+                document.getElementById('user-input').value = ''; // Clear input field
+            })
+            .catch(error => console.error('Error updating message:', error));
+        }
+        
+        function loadVisuals() {
+            if(document.getElementById('curr_lat').textContent != currLat) {
+                document.getElementById('curr_lat').textContent = currLat;
+            }
+            
+            console.log("CURRENT LONG:");
+            console.log(currLong);
+
+            if(document.getElementById('curr_long').textContent != currLong) {
+                document.getElementById('curr_long').textContent = currLong;
+            }
+            
+            if(document.getElementById('curr_target_lat').textContent != targetLat) {
+                document.getElementById('curr_target_lat').textContent = targetLat;
+            }
+            
+            if(document.getElementById('curr_target_long').textContent != targetLong) {
+                document.getElementById('curr_target_long').textContent = targetLong;
+            }
+            
+            if(document.getElementById('speedValueRight').value != speedRight) {
+                document.getElementById('speedValueRight').innerText = speedRight;
+                document.getElementById('speedRight').value = speedRight;
+            }
+            
+            if(document.getElementById('speedValueLeft').value != speedLeft) {
+                document.getElementById('speedValueLeft').innerText = speedLeft;
+                document.getElementById('speedLeft').value = speedLeft;
+            }
+            
+            if(document.getElementById('basicControlsSpeed').value != basicSpeed) {
+                document.getElementById('basisControlSpeedValue').innerText = basicSpeed;
+                document.getElementById('basicControlsSpeed').value = basicSpeed;
+            }
+            
+            
+            if(document.getElementById('manualOverride').checked != manualOverrideValue) {
+                document.getElementById('manualOverride').checked = manualOverrideValue;
+            }
+            
+            
+            
+            
+            console.log("Target Coords: ", target_coordinates);
+            console.log("Speed Left: ", speedRight);
+            console.log("Speed Right: ", speedLeft);
+            console.log("Basic Speed: ", basicSpeed);
+            
+            console.log("Manual Override: ", manualOverrideValue);
+            console.log("On land?: ", onLandValue);
+            if(document.getElementById('onLand').checked != onLandValue) {
+                document.getElementById('onLand').checked = onLandValue;
+            }
+        }
+    </script>
+</body>
+</html>
