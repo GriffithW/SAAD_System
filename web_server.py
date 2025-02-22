@@ -1,10 +1,17 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, Response
 import logging
+from camera_pi import Camera
 app = Flask(__name__)
 
 # Shared data placeholder (to be passed in the main script)
 shared_data = None
 
+def gen(camera):
+    """Video streaming generator function."""
+    while True:
+        frame = camera.get_frame()
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 def parseFloats(in_str):
     try:
@@ -22,6 +29,11 @@ def parseFloats(in_str):
 def index():
     # Access the shared data
     return render_template('index.html')
+
+@app.route('/video_feed')
+def video_feed():
+    """Video streaming route."""
+    return Response(gen(Camera()), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route('/get_curr_lat', methods=['GET'])
 def get_curr_lat():

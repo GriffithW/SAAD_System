@@ -1,0 +1,391 @@
+/***********************************
+App start up.
+************************************/
+2025-02-21 16:08:58 INFO  140732168684672 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:188:FindDevice In
+2025-02-21 16:08:58 ERROR 140732168684672 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/UVC/SYCommunicateManagerImplUVC.cpp:78:uvc_find_device error:-4
+2025-02-21 16:08:58 ERROR 140732168684672 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/sonix/SYCommunicateManagerImplSonix.cpp:214:nDev_index:31
+2025-02-21 16:08:58 DEBUG 140732168684672 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/TCP/SYCommunicateManagerImplTCP.cpp:256:UDP Find local IP:127.0.0.1
+2025-02-21 16:09:02 DEBUG 140732168684672 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/TCP/SYCommunicateManagerImplTCP.cpp:256:UDP Find local IP:10.132.212.179
+2025-02-21 16:09:05 INFO  140732168684672 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:221:FindDevice Out result: 0
+2025-02-21 16:09:05 INFO  140732168684672 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:188:FindDevice In
+2025-02-21 16:09:05 INFO  140732168684672 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:221:FindDevice Out result: 0
+2025-02-21 16:09:05 INFO  140732168684672 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:227:OpenDevice In, DeviceID:1 ,DeviceType:3
+2025-02-21 16:09:06 INFO  140732168684672 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:294:OpenDevice Out result: 0
+2025-02-21 16:09:06 INFO  140732168684672 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1142:GetDeviceSN In, DeviceID:1
+2025-02-21 16:09:06 INFO  140732168684672 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1160:GetDeviceSN Out result: 0
+2025-02-21 16:09:06 INFO  140732168684672 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1142:GetDeviceSN In, DeviceID:1
+2025-02-21 16:09:06 INFO  140732168684672 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1160:GetDeviceSN Out result: 0
+2025-02-21 16:09:06 INFO  140732168684672 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1190:GetDeviceHWVersion In, DeviceID:1
+2025-02-21 16:09:06 INFO  140732168684672 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1208:GetDeviceHWVersion Out result: 0
+2025-02-21 16:09:06 INFO  140732168684672 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1190:GetDeviceHWVersion In, DeviceID:1
+2025-02-21 16:09:06 INFO  140732168684672 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1208:GetDeviceHWVersion Out result: 0
+2025-02-21 16:09:06 INFO  140732168684672 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:332:QueryDeviceSupportFrameType In, DeviceID:1
+2025-02-21 16:09:06 INFO  140732168684672 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:332:QueryDeviceSupportFrameType In, DeviceID:1
+2025-02-21 16:09:06 INFO  140732168684672 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:362:QueryDeviceSupportFrameType Out result: 0FrameType:1.
+2025-02-21 16:09:06 INFO  140732168684672 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:375:QueryDeviceSupportResolution In, DeviceID:1 ,supportType:1
+2025-02-21 16:09:06 INFO  140732168684672 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:375:QueryDeviceSupportResolution In, DeviceID:1 ,supportType:1
+2025-02-21 16:09:06 INFO  140732168684672 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:405:QueryDeviceSupportResolution Out result: 0Resolution:1.2.
+2025-02-21 16:09:06 INFO  140732168684672 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:515:SetFrameResolution In, DeviceID:1 ,frameType:2 ,resolution:1
+2025-02-21 16:09:06 INFO  140732168684672 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:533:SetFrameResolution Out result: 0
+2025-02-21 16:09:06 INFO  140732168684672 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:443:StartStreaming In, DeviceID:1 ,streamType:4
+2025-02-21 16:09:09 INFO  140732168684672 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:461:StartStreaming Out result: 0
+/***********************************
+App start up.
+************************************/
+2025-02-21 16:15:33 INFO  140734075257984 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:188:FindDevice In
+2025-02-21 16:15:33 ERROR 140734075257984 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/UVC/SYCommunicateManagerImplUVC.cpp:78:uvc_find_device error:-4
+2025-02-21 16:15:33 ERROR 140734075257984 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/sonix/SYCommunicateManagerImplSonix.cpp:214:nDev_index:21
+2025-02-21 16:15:33 DEBUG 140734075257984 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/TCP/SYCommunicateManagerImplTCP.cpp:256:UDP Find local IP:127.0.0.1
+2025-02-21 16:15:36 DEBUG 140734075257984 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/TCP/SYCommunicateManagerImplTCP.cpp:256:UDP Find local IP:10.132.212.179
+2025-02-21 16:15:39 INFO  140734075257984 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:221:FindDevice Out result: 0
+2025-02-21 16:15:39 INFO  140734075257984 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:188:FindDevice In
+2025-02-21 16:15:39 INFO  140734075257984 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:221:FindDevice Out result: 0
+2025-02-21 16:15:39 INFO  140734075257984 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:227:OpenDevice In, DeviceID:1 ,DeviceType:3
+2025-02-21 16:15:40 INFO  140734075257984 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:294:OpenDevice Out result: 0
+2025-02-21 16:15:40 INFO  140734075257984 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1142:GetDeviceSN In, DeviceID:1
+2025-02-21 16:15:41 INFO  140734075257984 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1160:GetDeviceSN Out result: 0
+2025-02-21 16:15:41 INFO  140734075257984 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1142:GetDeviceSN In, DeviceID:1
+2025-02-21 16:15:41 INFO  140734075257984 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1160:GetDeviceSN Out result: 0
+2025-02-21 16:15:41 INFO  140734075257984 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1190:GetDeviceHWVersion In, DeviceID:1
+2025-02-21 16:15:41 INFO  140734075257984 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1208:GetDeviceHWVersion Out result: 0
+2025-02-21 16:15:41 INFO  140734075257984 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1190:GetDeviceHWVersion In, DeviceID:1
+2025-02-21 16:15:41 INFO  140734075257984 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1208:GetDeviceHWVersion Out result: 0
+2025-02-21 16:15:41 INFO  140734075257984 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:332:QueryDeviceSupportFrameType In, DeviceID:1
+2025-02-21 16:15:41 INFO  140734075257984 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:332:QueryDeviceSupportFrameType In, DeviceID:1
+2025-02-21 16:15:41 INFO  140734075257984 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:362:QueryDeviceSupportFrameType Out result: 0FrameType:1.
+2025-02-21 16:15:41 INFO  140734075257984 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:375:QueryDeviceSupportResolution In, DeviceID:1 ,supportType:1
+2025-02-21 16:15:41 INFO  140734075257984 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:375:QueryDeviceSupportResolution In, DeviceID:1 ,supportType:1
+2025-02-21 16:15:41 INFO  140734075257984 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:405:QueryDeviceSupportResolution Out result: 0Resolution:1.2.
+2025-02-21 16:15:41 INFO  140734075257984 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:515:SetFrameResolution In, DeviceID:1 ,frameType:2 ,resolution:1
+2025-02-21 16:15:41 INFO  140734075257984 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:533:SetFrameResolution Out result: 0
+2025-02-21 16:15:41 INFO  140734075257984 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:443:StartStreaming In, DeviceID:1 ,streamType:4
+2025-02-21 16:15:43 INFO  140734075257984 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:461:StartStreaming Out result: 0
+/***********************************
+App start up.
+************************************/
+2025-02-21 16:24:49 INFO  140736172115072 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:188:FindDevice In
+2025-02-21 16:24:49 ERROR 140736172115072 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/UVC/SYCommunicateManagerImplUVC.cpp:78:uvc_find_device error:-4
+2025-02-21 16:24:49 ERROR 140736172115072 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/sonix/SYCommunicateManagerImplSonix.cpp:214:nDev_index:31
+2025-02-21 16:24:49 DEBUG 140736172115072 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/TCP/SYCommunicateManagerImplTCP.cpp:256:UDP Find local IP:127.0.0.1
+2025-02-21 16:24:53 DEBUG 140736172115072 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/TCP/SYCommunicateManagerImplTCP.cpp:256:UDP Find local IP:10.132.212.179
+2025-02-21 16:24:56 INFO  140736172115072 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:221:FindDevice Out result: 0
+2025-02-21 16:24:56 INFO  140736172115072 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:188:FindDevice In
+2025-02-21 16:24:56 INFO  140736172115072 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:221:FindDevice Out result: 0
+2025-02-21 16:24:56 INFO  140736172115072 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:227:OpenDevice In, DeviceID:1 ,DeviceType:3
+2025-02-21 16:24:57 INFO  140736172115072 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:294:OpenDevice Out result: 0
+2025-02-21 16:24:57 INFO  140736172115072 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1142:GetDeviceSN In, DeviceID:1
+2025-02-21 16:24:57 INFO  140736172115072 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1160:GetDeviceSN Out result: 0
+2025-02-21 16:24:57 INFO  140736172115072 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1142:GetDeviceSN In, DeviceID:1
+2025-02-21 16:24:57 INFO  140736172115072 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1160:GetDeviceSN Out result: 0
+2025-02-21 16:24:57 INFO  140736172115072 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1190:GetDeviceHWVersion In, DeviceID:1
+2025-02-21 16:24:57 INFO  140736172115072 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1208:GetDeviceHWVersion Out result: 0
+2025-02-21 16:24:57 INFO  140736172115072 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1190:GetDeviceHWVersion In, DeviceID:1
+2025-02-21 16:24:57 INFO  140736172115072 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1208:GetDeviceHWVersion Out result: 0
+2025-02-21 16:24:57 INFO  140736172115072 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:332:QueryDeviceSupportFrameType In, DeviceID:1
+2025-02-21 16:24:57 INFO  140736172115072 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:332:QueryDeviceSupportFrameType In, DeviceID:1
+2025-02-21 16:24:57 INFO  140736172115072 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:362:QueryDeviceSupportFrameType Out result: 0FrameType:1.
+2025-02-21 16:24:57 INFO  140736172115072 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:375:QueryDeviceSupportResolution In, DeviceID:1 ,supportType:1
+2025-02-21 16:24:57 INFO  140736172115072 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:375:QueryDeviceSupportResolution In, DeviceID:1 ,supportType:1
+2025-02-21 16:24:57 INFO  140736172115072 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:405:QueryDeviceSupportResolution Out result: 0Resolution:1.2.
+2025-02-21 16:24:57 INFO  140736172115072 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:515:SetFrameResolution In, DeviceID:1 ,frameType:2 ,resolution:1
+2025-02-21 16:24:57 INFO  140736172115072 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:533:SetFrameResolution Out result: 0
+2025-02-21 16:24:57 INFO  140736172115072 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:443:StartStreaming In, DeviceID:1 ,streamType:4
+2025-02-21 16:25:00 INFO  140736172115072 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:461:StartStreaming Out result: 0
+/***********************************
+App start up.
+************************************/
+2025-02-21 16:40:01 INFO  140736353880832 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:188:FindDevice In
+2025-02-21 16:40:01 ERROR 140736353880832 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/UVC/SYCommunicateManagerImplUVC.cpp:78:uvc_find_device error:-4
+2025-02-21 16:40:01 ERROR 140736353880832 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/sonix/SYCommunicateManagerImplSonix.cpp:214:nDev_index:21
+2025-02-21 16:40:01 DEBUG 140736353880832 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/TCP/SYCommunicateManagerImplTCP.cpp:256:UDP Find local IP:127.0.0.1
+2025-02-21 16:40:04 DEBUG 140736353880832 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/TCP/SYCommunicateManagerImplTCP.cpp:256:UDP Find local IP:10.132.212.179
+2025-02-21 16:40:07 INFO  140736353880832 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:221:FindDevice Out result: 0
+2025-02-21 16:40:07 INFO  140736353880832 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:188:FindDevice In
+2025-02-21 16:40:07 INFO  140736353880832 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:221:FindDevice Out result: 0
+2025-02-21 16:40:07 INFO  140736353880832 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:227:OpenDevice In, DeviceID:1 ,DeviceType:3
+2025-02-21 16:40:08 INFO  140736353880832 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:294:OpenDevice Out result: 0
+2025-02-21 16:40:08 INFO  140736353880832 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1142:GetDeviceSN In, DeviceID:1
+2025-02-21 16:40:09 INFO  140736353880832 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1160:GetDeviceSN Out result: 0
+2025-02-21 16:40:09 INFO  140736353880832 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1142:GetDeviceSN In, DeviceID:1
+2025-02-21 16:40:09 INFO  140736353880832 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1160:GetDeviceSN Out result: 0
+2025-02-21 16:40:09 INFO  140736353880832 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1190:GetDeviceHWVersion In, DeviceID:1
+2025-02-21 16:40:09 INFO  140736353880832 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1208:GetDeviceHWVersion Out result: 0
+2025-02-21 16:40:09 INFO  140736353880832 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1190:GetDeviceHWVersion In, DeviceID:1
+2025-02-21 16:40:09 INFO  140736353880832 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1208:GetDeviceHWVersion Out result: 0
+2025-02-21 16:40:09 INFO  140736353880832 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:332:QueryDeviceSupportFrameType In, DeviceID:1
+2025-02-21 16:40:09 INFO  140736353880832 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:332:QueryDeviceSupportFrameType In, DeviceID:1
+2025-02-21 16:40:09 INFO  140736353880832 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:362:QueryDeviceSupportFrameType Out result: 0FrameType:1.
+2025-02-21 16:40:09 INFO  140736353880832 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:375:QueryDeviceSupportResolution In, DeviceID:1 ,supportType:1
+2025-02-21 16:40:09 INFO  140736353880832 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:375:QueryDeviceSupportResolution In, DeviceID:1 ,supportType:1
+2025-02-21 16:40:09 INFO  140736353880832 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:405:QueryDeviceSupportResolution Out result: 0Resolution:1.2.
+2025-02-21 16:40:09 INFO  140736353880832 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:515:SetFrameResolution In, DeviceID:1 ,frameType:2 ,resolution:1
+2025-02-21 16:40:09 INFO  140736353880832 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:533:SetFrameResolution Out result: 0
+2025-02-21 16:40:09 INFO  140736353880832 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:443:StartStreaming In, DeviceID:1 ,streamType:4
+2025-02-21 16:40:11 INFO  140736353880832 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:461:StartStreaming Out result: 0
+/***********************************
+App start up.
+************************************/
+2025-02-21 17:01:57 INFO  140734479303808 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:188:FindDevice In
+2025-02-21 17:01:57 ERROR 140734479303808 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/UVC/SYCommunicateManagerImplUVC.cpp:78:uvc_find_device error:-4
+2025-02-21 17:01:57 ERROR 140734479303808 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/sonix/SYCommunicateManagerImplSonix.cpp:214:nDev_index:21
+2025-02-21 17:01:57 DEBUG 140734479303808 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/TCP/SYCommunicateManagerImplTCP.cpp:256:UDP Find local IP:127.0.0.1
+2025-02-21 17:02:00 DEBUG 140734479303808 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/TCP/SYCommunicateManagerImplTCP.cpp:256:UDP Find local IP:10.132.212.179
+2025-02-21 17:02:03 INFO  140734479303808 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:221:FindDevice Out result: 0
+2025-02-21 17:02:03 INFO  140734479303808 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:188:FindDevice In
+2025-02-21 17:02:03 INFO  140734479303808 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:221:FindDevice Out result: 0
+2025-02-21 17:02:03 INFO  140734479303808 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:227:OpenDevice In, DeviceID:1 ,DeviceType:3
+2025-02-21 17:02:04 INFO  140734479303808 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:294:OpenDevice Out result: 0
+2025-02-21 17:02:04 INFO  140734479303808 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1142:GetDeviceSN In, DeviceID:1
+2025-02-21 17:02:05 INFO  140734479303808 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1160:GetDeviceSN Out result: 0
+2025-02-21 17:02:05 INFO  140734479303808 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1142:GetDeviceSN In, DeviceID:1
+2025-02-21 17:02:05 INFO  140734479303808 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1160:GetDeviceSN Out result: 0
+2025-02-21 17:02:05 INFO  140734479303808 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1190:GetDeviceHWVersion In, DeviceID:1
+2025-02-21 17:02:05 INFO  140734479303808 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1208:GetDeviceHWVersion Out result: 0
+2025-02-21 17:02:05 INFO  140734479303808 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1190:GetDeviceHWVersion In, DeviceID:1
+2025-02-21 17:02:05 INFO  140734479303808 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1208:GetDeviceHWVersion Out result: 0
+2025-02-21 17:02:05 INFO  140734479303808 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:332:QueryDeviceSupportFrameType In, DeviceID:1
+2025-02-21 17:02:05 INFO  140734479303808 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:332:QueryDeviceSupportFrameType In, DeviceID:1
+2025-02-21 17:02:05 INFO  140734479303808 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:362:QueryDeviceSupportFrameType Out result: 0FrameType:1.
+2025-02-21 17:02:05 INFO  140734479303808 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:375:QueryDeviceSupportResolution In, DeviceID:1 ,supportType:1
+2025-02-21 17:02:05 INFO  140734479303808 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:375:QueryDeviceSupportResolution In, DeviceID:1 ,supportType:1
+2025-02-21 17:02:05 INFO  140734479303808 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:405:QueryDeviceSupportResolution Out result: 0Resolution:1.2.
+2025-02-21 17:02:05 INFO  140734479303808 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:515:SetFrameResolution In, DeviceID:1 ,frameType:2 ,resolution:1
+2025-02-21 17:02:05 INFO  140734479303808 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:533:SetFrameResolution Out result: 0
+2025-02-21 17:02:05 INFO  140734479303808 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:443:StartStreaming In, DeviceID:1 ,streamType:4
+2025-02-21 17:02:07 INFO  140734479303808 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:461:StartStreaming Out result: 0
+/***********************************
+App start up.
+************************************/
+2025-02-21 17:05:03 INFO  140735380636800 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:188:FindDevice In
+2025-02-21 17:05:03 ERROR 140735380636800 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/UVC/SYCommunicateManagerImplUVC.cpp:78:uvc_find_device error:-4
+2025-02-21 17:05:03 ERROR 140735380636800 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/sonix/SYCommunicateManagerImplSonix.cpp:214:nDev_index:21
+2025-02-21 17:05:03 DEBUG 140735380636800 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/TCP/SYCommunicateManagerImplTCP.cpp:256:UDP Find local IP:127.0.0.1
+2025-02-21 17:05:06 DEBUG 140735380636800 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/TCP/SYCommunicateManagerImplTCP.cpp:256:UDP Find local IP:10.132.212.179
+2025-02-21 17:05:09 INFO  140735380636800 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:221:FindDevice Out result: 0
+2025-02-21 17:05:09 INFO  140735380636800 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:188:FindDevice In
+2025-02-21 17:05:09 INFO  140735380636800 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:221:FindDevice Out result: 0
+2025-02-21 17:05:09 INFO  140735380636800 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:227:OpenDevice In, DeviceID:1 ,DeviceType:3
+/***********************************
+App start up.
+************************************/
+2025-02-21 17:06:14 INFO  140732217492608 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:188:FindDevice In
+2025-02-21 17:06:14 ERROR 140732217492608 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/UVC/SYCommunicateManagerImplUVC.cpp:78:uvc_find_device error:-4
+2025-02-21 17:06:14 ERROR 140732217492608 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/sonix/SYCommunicateManagerImplSonix.cpp:214:nDev_index:21
+2025-02-21 17:06:14 DEBUG 140732217492608 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/TCP/SYCommunicateManagerImplTCP.cpp:256:UDP Find local IP:127.0.0.1
+2025-02-21 17:06:17 DEBUG 140732217492608 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/TCP/SYCommunicateManagerImplTCP.cpp:256:UDP Find local IP:10.132.212.179
+2025-02-21 17:06:20 INFO  140732217492608 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:221:FindDevice Out result: 0
+2025-02-21 17:06:20 INFO  140732217492608 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:188:FindDevice In
+2025-02-21 17:06:20 INFO  140732217492608 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:221:FindDevice Out result: 0
+2025-02-21 17:06:20 INFO  140732217492608 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:227:OpenDevice In, DeviceID:1 ,DeviceType:3
+2025-02-21 17:06:21 INFO  140732217492608 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:294:OpenDevice Out result: 0
+2025-02-21 17:06:21 INFO  140732217492608 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1142:GetDeviceSN In, DeviceID:1
+2025-02-21 17:06:22 INFO  140732217492608 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1160:GetDeviceSN Out result: 0
+2025-02-21 17:06:22 INFO  140732217492608 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1142:GetDeviceSN In, DeviceID:1
+2025-02-21 17:06:22 INFO  140732217492608 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1160:GetDeviceSN Out result: 0
+2025-02-21 17:06:22 INFO  140732217492608 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1190:GetDeviceHWVersion In, DeviceID:1
+2025-02-21 17:06:22 INFO  140732217492608 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1208:GetDeviceHWVersion Out result: 0
+2025-02-21 17:06:22 INFO  140732217492608 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1190:GetDeviceHWVersion In, DeviceID:1
+2025-02-21 17:06:22 INFO  140732217492608 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1208:GetDeviceHWVersion Out result: 0
+2025-02-21 17:06:22 INFO  140732217492608 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:332:QueryDeviceSupportFrameType In, DeviceID:1
+2025-02-21 17:06:22 INFO  140732217492608 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:332:QueryDeviceSupportFrameType In, DeviceID:1
+2025-02-21 17:06:22 INFO  140732217492608 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:362:QueryDeviceSupportFrameType Out result: 0FrameType:1.
+2025-02-21 17:06:22 INFO  140732217492608 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:375:QueryDeviceSupportResolution In, DeviceID:1 ,supportType:1
+2025-02-21 17:06:22 INFO  140732217492608 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:375:QueryDeviceSupportResolution In, DeviceID:1 ,supportType:1
+2025-02-21 17:06:22 INFO  140732217492608 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:405:QueryDeviceSupportResolution Out result: 0Resolution:1.2.
+2025-02-21 17:06:22 INFO  140732217492608 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:515:SetFrameResolution In, DeviceID:1 ,frameType:2 ,resolution:1
+2025-02-21 17:06:22 INFO  140732217492608 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:533:SetFrameResolution Out result: 0
+2025-02-21 17:06:22 INFO  140732217492608 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:443:StartStreaming In, DeviceID:1 ,streamType:4
+2025-02-21 17:06:24 INFO  140732217492608 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:461:StartStreaming Out result: 0
+/***********************************
+App start up.
+************************************/
+2025-02-21 17:08:08 INFO  140736360858752 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:188:FindDevice In
+2025-02-21 17:08:08 ERROR 140736360858752 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/UVC/SYCommunicateManagerImplUVC.cpp:78:uvc_find_device error:-4
+2025-02-21 17:08:08 ERROR 140736360858752 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/sonix/SYCommunicateManagerImplSonix.cpp:214:nDev_index:21
+2025-02-21 17:08:08 DEBUG 140736360858752 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/TCP/SYCommunicateManagerImplTCP.cpp:256:UDP Find local IP:127.0.0.1
+2025-02-21 17:08:11 DEBUG 140736360858752 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/TCP/SYCommunicateManagerImplTCP.cpp:256:UDP Find local IP:10.132.212.179
+2025-02-21 17:08:14 INFO  140736360858752 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:221:FindDevice Out result: 0
+2025-02-21 17:08:14 INFO  140736360858752 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:188:FindDevice In
+2025-02-21 17:08:14 INFO  140736360858752 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:221:FindDevice Out result: 0
+2025-02-21 17:08:14 INFO  140736360858752 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:227:OpenDevice In, DeviceID:1 ,DeviceType:3
+2025-02-21 17:08:15 INFO  140736360858752 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:294:OpenDevice Out result: 0
+2025-02-21 17:08:15 INFO  140736360858752 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1142:GetDeviceSN In, DeviceID:1
+2025-02-21 17:08:16 INFO  140736360858752 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1160:GetDeviceSN Out result: 0
+2025-02-21 17:08:16 INFO  140736360858752 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1142:GetDeviceSN In, DeviceID:1
+2025-02-21 17:08:16 INFO  140736360858752 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1160:GetDeviceSN Out result: 0
+2025-02-21 17:08:16 INFO  140736360858752 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1190:GetDeviceHWVersion In, DeviceID:1
+2025-02-21 17:08:16 INFO  140736360858752 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1208:GetDeviceHWVersion Out result: 0
+2025-02-21 17:08:16 INFO  140736360858752 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1190:GetDeviceHWVersion In, DeviceID:1
+2025-02-21 17:08:16 INFO  140736360858752 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1208:GetDeviceHWVersion Out result: 0
+2025-02-21 17:08:16 INFO  140736360858752 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:332:QueryDeviceSupportFrameType In, DeviceID:1
+2025-02-21 17:08:16 INFO  140736360858752 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:332:QueryDeviceSupportFrameType In, DeviceID:1
+2025-02-21 17:08:16 INFO  140736360858752 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:362:QueryDeviceSupportFrameType Out result: 0FrameType:1.
+2025-02-21 17:08:16 INFO  140736360858752 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:375:QueryDeviceSupportResolution In, DeviceID:1 ,supportType:1
+2025-02-21 17:08:16 INFO  140736360858752 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:375:QueryDeviceSupportResolution In, DeviceID:1 ,supportType:1
+2025-02-21 17:08:16 INFO  140736360858752 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:405:QueryDeviceSupportResolution Out result: 0Resolution:1.2.
+2025-02-21 17:08:16 INFO  140736360858752 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:515:SetFrameResolution In, DeviceID:1 ,frameType:2 ,resolution:1
+2025-02-21 17:08:16 INFO  140736360858752 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:533:SetFrameResolution Out result: 0
+2025-02-21 17:08:16 INFO  140736360858752 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:443:StartStreaming In, DeviceID:1 ,streamType:4
+2025-02-21 17:08:19 INFO  140736360858752 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:461:StartStreaming Out result: 0
+/***********************************
+App start up.
+************************************/
+2025-02-21 17:16:19 INFO  140733107815552 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:188:FindDevice In
+2025-02-21 17:16:19 ERROR 140733107815552 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/UVC/SYCommunicateManagerImplUVC.cpp:78:uvc_find_device error:-4
+2025-02-21 17:16:19 ERROR 140733107815552 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/sonix/SYCommunicateManagerImplSonix.cpp:214:nDev_index:01
+2025-02-21 17:16:19 DEBUG 140733107815552 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/TCP/SYCommunicateManagerImplTCP.cpp:256:UDP Find local IP:127.0.0.1
+2025-02-21 17:16:23 DEBUG 140733107815552 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/TCP/SYCommunicateManagerImplTCP.cpp:256:UDP Find local IP:10.132.212.179
+2025-02-21 17:16:26 INFO  140733107815552 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:221:FindDevice Out result: 0
+2025-02-21 17:16:26 INFO  140733107815552 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:188:FindDevice In
+2025-02-21 17:16:26 INFO  140733107815552 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:221:FindDevice Out result: 0
+2025-02-21 17:16:26 INFO  140733107815552 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:227:OpenDevice In, DeviceID:1 ,DeviceType:3
+2025-02-21 17:16:27 INFO  140733107815552 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:294:OpenDevice Out result: 0
+2025-02-21 17:16:27 INFO  140733107815552 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1142:GetDeviceSN In, DeviceID:1
+2025-02-21 17:16:27 INFO  140733107815552 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1160:GetDeviceSN Out result: 0
+2025-02-21 17:16:27 INFO  140733107815552 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1142:GetDeviceSN In, DeviceID:1
+2025-02-21 17:16:27 INFO  140733107815552 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1160:GetDeviceSN Out result: 0
+2025-02-21 17:16:27 INFO  140733107815552 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1190:GetDeviceHWVersion In, DeviceID:1
+2025-02-21 17:16:27 INFO  140733107815552 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1208:GetDeviceHWVersion Out result: 0
+2025-02-21 17:16:27 INFO  140733107815552 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1190:GetDeviceHWVersion In, DeviceID:1
+2025-02-21 17:16:27 INFO  140733107815552 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1208:GetDeviceHWVersion Out result: 0
+2025-02-21 17:16:27 INFO  140733107815552 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:332:QueryDeviceSupportFrameType In, DeviceID:1
+2025-02-21 17:16:27 INFO  140733107815552 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:332:QueryDeviceSupportFrameType In, DeviceID:1
+2025-02-21 17:16:27 INFO  140733107815552 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:362:QueryDeviceSupportFrameType Out result: 0FrameType:1.
+2025-02-21 17:16:27 INFO  140733107815552 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:375:QueryDeviceSupportResolution In, DeviceID:1 ,supportType:1
+2025-02-21 17:16:27 INFO  140733107815552 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:375:QueryDeviceSupportResolution In, DeviceID:1 ,supportType:1
+2025-02-21 17:16:27 INFO  140733107815552 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:405:QueryDeviceSupportResolution Out result: 0Resolution:1.2.
+2025-02-21 17:16:27 INFO  140733107815552 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:515:SetFrameResolution In, DeviceID:1 ,frameType:2 ,resolution:1
+2025-02-21 17:16:27 INFO  140733107815552 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:533:SetFrameResolution Out result: 0
+2025-02-21 17:16:27 INFO  140733107815552 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:443:StartStreaming In, DeviceID:1 ,streamType:4
+2025-02-21 17:16:30 INFO  140733107815552 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:461:StartStreaming Out result: 0
+/***********************************
+App start up.
+************************************/
+2025-02-21 17:18:40 INFO  140736162612352 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:188:FindDevice In
+2025-02-21 17:18:40 ERROR 140736162612352 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/UVC/SYCommunicateManagerImplUVC.cpp:78:uvc_find_device error:-4
+2025-02-21 17:18:40 ERROR 140736162612352 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/sonix/SYCommunicateManagerImplSonix.cpp:214:nDev_index:11
+2025-02-21 17:18:40 DEBUG 140736162612352 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/TCP/SYCommunicateManagerImplTCP.cpp:256:UDP Find local IP:127.0.0.1
+2025-02-21 17:18:43 DEBUG 140736162612352 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/TCP/SYCommunicateManagerImplTCP.cpp:256:UDP Find local IP:10.132.212.179
+2025-02-21 17:18:46 INFO  140736162612352 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:221:FindDevice Out result: 0
+2025-02-21 17:18:46 INFO  140736162612352 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:188:FindDevice In
+2025-02-21 17:18:46 INFO  140736162612352 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:221:FindDevice Out result: 0
+2025-02-21 17:18:46 INFO  140736162612352 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:227:OpenDevice In, DeviceID:1 ,DeviceType:3
+2025-02-21 17:18:47 INFO  140736162612352 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:294:OpenDevice Out result: 0
+2025-02-21 17:18:47 INFO  140736162612352 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1142:GetDeviceSN In, DeviceID:1
+2025-02-21 17:18:48 INFO  140736162612352 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1160:GetDeviceSN Out result: 0
+2025-02-21 17:18:48 INFO  140736162612352 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1142:GetDeviceSN In, DeviceID:1
+2025-02-21 17:18:48 INFO  140736162612352 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1160:GetDeviceSN Out result: 0
+2025-02-21 17:18:48 INFO  140736162612352 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1190:GetDeviceHWVersion In, DeviceID:1
+2025-02-21 17:18:48 INFO  140736162612352 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1208:GetDeviceHWVersion Out result: 0
+2025-02-21 17:18:48 INFO  140736162612352 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1190:GetDeviceHWVersion In, DeviceID:1
+2025-02-21 17:18:48 INFO  140736162612352 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1208:GetDeviceHWVersion Out result: 0
+2025-02-21 17:18:48 INFO  140736162612352 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:332:QueryDeviceSupportFrameType In, DeviceID:1
+2025-02-21 17:18:48 INFO  140736162612352 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:332:QueryDeviceSupportFrameType In, DeviceID:1
+2025-02-21 17:18:48 INFO  140736162612352 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:362:QueryDeviceSupportFrameType Out result: 0FrameType:1.
+2025-02-21 17:18:48 INFO  140736162612352 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:375:QueryDeviceSupportResolution In, DeviceID:1 ,supportType:1
+2025-02-21 17:18:48 INFO  140736162612352 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:375:QueryDeviceSupportResolution In, DeviceID:1 ,supportType:1
+2025-02-21 17:18:48 INFO  140736162612352 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:405:QueryDeviceSupportResolution Out result: 0Resolution:1.2.
+2025-02-21 17:18:48 INFO  140736162612352 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:515:SetFrameResolution In, DeviceID:1 ,frameType:2 ,resolution:1
+2025-02-21 17:18:48 INFO  140736162612352 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:533:SetFrameResolution Out result: 0
+2025-02-21 17:18:48 INFO  140736162612352 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:443:StartStreaming In, DeviceID:1 ,streamType:4
+2025-02-21 17:18:51 INFO  140736162612352 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:461:StartStreaming Out result: 0
+/***********************************
+App start up.
+************************************/
+2025-02-21 17:20:41 INFO  140734118757504 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:188:FindDevice In
+2025-02-21 17:20:41 ERROR 140734118757504 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/UVC/SYCommunicateManagerImplUVC.cpp:78:uvc_find_device error:-4
+2025-02-21 17:20:41 ERROR 140734118757504 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/sonix/SYCommunicateManagerImplSonix.cpp:214:nDev_index:01
+2025-02-21 17:20:41 DEBUG 140734118757504 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/TCP/SYCommunicateManagerImplTCP.cpp:256:UDP Find local IP:127.0.0.1
+2025-02-21 17:20:44 DEBUG 140734118757504 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/TCP/SYCommunicateManagerImplTCP.cpp:256:UDP Find local IP:10.132.212.179
+2025-02-21 17:20:47 INFO  140734118757504 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:221:FindDevice Out result: 0
+2025-02-21 17:20:47 INFO  140734118757504 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:188:FindDevice In
+2025-02-21 17:20:47 INFO  140734118757504 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:221:FindDevice Out result: 0
+2025-02-21 17:20:47 INFO  140734118757504 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:227:OpenDevice In, DeviceID:1 ,DeviceType:3
+2025-02-21 17:20:49 INFO  140734118757504 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:294:OpenDevice Out result: 0
+2025-02-21 17:20:49 INFO  140734118757504 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1142:GetDeviceSN In, DeviceID:1
+2025-02-21 17:20:49 INFO  140734118757504 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1160:GetDeviceSN Out result: 0
+2025-02-21 17:20:49 INFO  140734118757504 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1142:GetDeviceSN In, DeviceID:1
+2025-02-21 17:20:49 INFO  140734118757504 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1160:GetDeviceSN Out result: 0
+2025-02-21 17:20:49 INFO  140734118757504 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1190:GetDeviceHWVersion In, DeviceID:1
+2025-02-21 17:20:49 INFO  140734118757504 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1208:GetDeviceHWVersion Out result: 0
+2025-02-21 17:20:49 INFO  140734118757504 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1190:GetDeviceHWVersion In, DeviceID:1
+2025-02-21 17:20:49 INFO  140734118757504 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1208:GetDeviceHWVersion Out result: 0
+2025-02-21 17:20:49 INFO  140734118757504 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:332:QueryDeviceSupportFrameType In, DeviceID:1
+2025-02-21 17:20:49 INFO  140734118757504 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:332:QueryDeviceSupportFrameType In, DeviceID:1
+2025-02-21 17:20:49 INFO  140734118757504 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:362:QueryDeviceSupportFrameType Out result: 0FrameType:1.
+2025-02-21 17:20:49 INFO  140734118757504 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:375:QueryDeviceSupportResolution In, DeviceID:1 ,supportType:1
+2025-02-21 17:20:49 INFO  140734118757504 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:375:QueryDeviceSupportResolution In, DeviceID:1 ,supportType:1
+2025-02-21 17:20:49 INFO  140734118757504 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:405:QueryDeviceSupportResolution Out result: 0Resolution:1.2.
+2025-02-21 17:20:49 INFO  140734118757504 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:515:SetFrameResolution In, DeviceID:1 ,frameType:2 ,resolution:1
+2025-02-21 17:20:49 INFO  140734118757504 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:533:SetFrameResolution Out result: 0
+2025-02-21 17:20:49 INFO  140734118757504 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:443:StartStreaming In, DeviceID:1 ,streamType:4
+2025-02-21 17:20:52 INFO  140734118757504 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:461:StartStreaming Out result: 0
+/***********************************
+App start up.
+************************************/
+2025-02-21 17:21:13 INFO  140732131542144 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:188:FindDevice In
+2025-02-21 17:21:13 ERROR 140732131542144 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/UVC/SYCommunicateManagerImplUVC.cpp:78:uvc_find_device error:-4
+2025-02-21 17:21:13 ERROR 140732131542144 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/sonix/SYCommunicateManagerImplSonix.cpp:214:nDev_index:01
+2025-02-21 17:21:13 DEBUG 140732131542144 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/TCP/SYCommunicateManagerImplTCP.cpp:256:UDP Find local IP:127.0.0.1
+2025-02-21 17:21:16 DEBUG 140732131542144 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/TCP/SYCommunicateManagerImplTCP.cpp:256:UDP Find local IP:10.132.212.179
+2025-02-21 17:21:19 INFO  140732131542144 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:221:FindDevice Out result: 0
+2025-02-21 17:21:19 INFO  140732131542144 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:188:FindDevice In
+2025-02-21 17:21:19 INFO  140732131542144 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:221:FindDevice Out result: 0
+2025-02-21 17:21:19 INFO  140732131542144 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:227:OpenDevice In, DeviceID:1 ,DeviceType:3
+2025-02-21 17:21:21 INFO  140732131542144 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:294:OpenDevice Out result: 0
+2025-02-21 17:21:21 INFO  140732131542144 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1142:GetDeviceSN In, DeviceID:1
+2025-02-21 17:21:21 INFO  140732131542144 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1160:GetDeviceSN Out result: 0
+2025-02-21 17:21:21 INFO  140732131542144 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1142:GetDeviceSN In, DeviceID:1
+2025-02-21 17:21:21 INFO  140732131542144 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1160:GetDeviceSN Out result: 0
+2025-02-21 17:21:21 INFO  140732131542144 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1190:GetDeviceHWVersion In, DeviceID:1
+2025-02-21 17:21:21 INFO  140732131542144 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1208:GetDeviceHWVersion Out result: 0
+2025-02-21 17:21:21 INFO  140732131542144 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1190:GetDeviceHWVersion In, DeviceID:1
+2025-02-21 17:21:21 INFO  140732131542144 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1208:GetDeviceHWVersion Out result: 0
+2025-02-21 17:21:21 INFO  140732131542144 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:332:QueryDeviceSupportFrameType In, DeviceID:1
+2025-02-21 17:21:21 INFO  140732131542144 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:332:QueryDeviceSupportFrameType In, DeviceID:1
+2025-02-21 17:21:21 INFO  140732131542144 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:362:QueryDeviceSupportFrameType Out result: 0FrameType:1.
+2025-02-21 17:21:21 INFO  140732131542144 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:375:QueryDeviceSupportResolution In, DeviceID:1 ,supportType:1
+2025-02-21 17:21:21 INFO  140732131542144 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:375:QueryDeviceSupportResolution In, DeviceID:1 ,supportType:1
+2025-02-21 17:21:21 INFO  140732131542144 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:405:QueryDeviceSupportResolution Out result: 0Resolution:1.2.
+2025-02-21 17:21:21 INFO  140732131542144 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:515:SetFrameResolution In, DeviceID:1 ,frameType:2 ,resolution:1
+2025-02-21 17:21:21 INFO  140732131542144 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:533:SetFrameResolution Out result: 0
+2025-02-21 17:21:21 INFO  140732131542144 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:443:StartStreaming In, DeviceID:1 ,streamType:4
+2025-02-21 17:21:24 INFO  140732131542144 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:461:StartStreaming Out result: 0
+/***********************************
+App start up.
+************************************/
+2025-02-21 17:21:31 INFO  140732991308928 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:188:FindDevice In
+2025-02-21 17:21:31 ERROR 140732991308928 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/UVC/SYCommunicateManagerImplUVC.cpp:78:uvc_find_device error:-4
+2025-02-21 17:21:31 ERROR 140732991308928 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/sonix/SYCommunicateManagerImplSonix.cpp:214:nDev_index:11
+2025-02-21 17:21:31 DEBUG 140732991308928 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/TCP/SYCommunicateManagerImplTCP.cpp:256:UDP Find local IP:127.0.0.1
+/***********************************
+App start up.
+************************************/
+2025-02-21 17:25:01 INFO  140734593369216 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:188:FindDevice In
+2025-02-21 17:25:01 ERROR 140734593369216 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/UVC/SYCommunicateManagerImplUVC.cpp:78:uvc_find_device error:-4
+2025-02-21 17:25:01 ERROR 140734593369216 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/sonix/SYCommunicateManagerImplSonix.cpp:214:nDev_index:11
+2025-02-21 17:25:01 DEBUG 140734593369216 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/TCP/SYCommunicateManagerImplTCP.cpp:256:UDP Find local IP:127.0.0.1
+2025-02-21 17:25:04 DEBUG 140734593369216 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/communicate/TCP/SYCommunicateManagerImplTCP.cpp:256:UDP Find local IP:10.132.212.179
+2025-02-21 17:25:07 INFO  140734593369216 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:221:FindDevice Out result: 0
+2025-02-21 17:25:07 INFO  140734593369216 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:188:FindDevice In
+2025-02-21 17:25:07 INFO  140734593369216 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:221:FindDevice Out result: 0
+2025-02-21 17:25:07 INFO  140734593369216 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:227:OpenDevice In, DeviceID:1 ,DeviceType:3
+2025-02-21 17:25:08 INFO  140734593369216 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:294:OpenDevice Out result: 0
+2025-02-21 17:25:08 INFO  140734593369216 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1142:GetDeviceSN In, DeviceID:1
+2025-02-21 17:25:09 INFO  140734593369216 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1160:GetDeviceSN Out result: 0
+2025-02-21 17:25:09 INFO  140734593369216 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1142:GetDeviceSN In, DeviceID:1
+2025-02-21 17:25:09 INFO  140734593369216 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1160:GetDeviceSN Out result: 0
+2025-02-21 17:25:09 INFO  140734593369216 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1190:GetDeviceHWVersion In, DeviceID:1
+2025-02-21 17:25:09 INFO  140734593369216 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1208:GetDeviceHWVersion Out result: 0
+2025-02-21 17:25:09 INFO  140734593369216 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1190:GetDeviceHWVersion In, DeviceID:1
+2025-02-21 17:25:09 INFO  140734593369216 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:1208:GetDeviceHWVersion Out result: 0
+2025-02-21 17:25:09 INFO  140734593369216 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:332:QueryDeviceSupportFrameType In, DeviceID:1
+2025-02-21 17:25:09 INFO  140734593369216 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:332:QueryDeviceSupportFrameType In, DeviceID:1
+2025-02-21 17:25:09 INFO  140734593369216 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:362:QueryDeviceSupportFrameType Out result: 0FrameType:1.
+2025-02-21 17:25:09 INFO  140734593369216 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:375:QueryDeviceSupportResolution In, DeviceID:1 ,supportType:1
+2025-02-21 17:25:09 INFO  140734593369216 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:375:QueryDeviceSupportResolution In, DeviceID:1 ,supportType:1
+2025-02-21 17:25:09 INFO  140734593369216 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:405:QueryDeviceSupportResolution Out result: 0Resolution:1.2.
+2025-02-21 17:25:09 INFO  140734593369216 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:515:SetFrameResolution In, DeviceID:1 ,frameType:2 ,resolution:1
+2025-02-21 17:25:09 INFO  140734593369216 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:533:SetFrameResolution Out result: 0
+2025-02-21 17:25:09 INFO  140734593369216 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:443:StartStreaming In, DeviceID:1 ,streamType:4
+2025-02-21 17:25:12 INFO  140734593369216 /home/yangsy/work/sdk/SYSDK4/SynexensSDK/src/device/SYDeviceManager.cpp:461:StartStreaming Out result: 0
