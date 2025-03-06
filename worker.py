@@ -7,7 +7,7 @@ import gpiozero
 from time import sleep
 import numpy as np
 import sys
-import gps
+#import gps
 import collections
 import serial
 import math
@@ -166,7 +166,7 @@ def control_code(target_lat, target_long, curr_lat, curr_long, heading):
 
 def main(shared_data):
     # Connect to the gpsd daemon
-    session = gps.gps(mode=gps.WATCH_ENABLE)
+    #session = gps.gps(mode=gps.WATCH_ENABLE)
     # Pin configuration
     #LEFT_MOTOR = 12
     #RIGHT_MOTOR = 13  # GPIO pin connected to the PWM device
@@ -217,18 +217,18 @@ def main(shared_data):
     counter = 0
     while True:
         sleep(0.25)  # Adjust sleep time as needed
-        print("COUNTER: " + str(counter))
-        counter = counter + 1
-        if(counter == 4):
-            print("READING GPS!!")
-            success, lat, lon = readGPS(session)
-            counter = 0
-            if(success):
-                print("SUCCESS!!" + str(lat) + " " + str(lon))
-                shared_data["currLat"] = lat
-                shared_data["currLong"] = lon
-                pastGPSPositions.append((lat, lon))
-                print("GPS RECEIVED!!")        
+        #print("COUNTER: " + str(counter))
+        #counter = counter + 1
+        #if(counter == 4):
+        #    print("READING GPS!!")
+        #    success, lat, lon = readGPS(session)
+        #    counter = 0
+        #    if(success):
+        #        print("SUCCESS!!" + str(lat) + " " + str(lon))
+        #        shared_data["currLat"] = lat
+        #        shared_data["currLong"] = lon
+        #        pastGPSPositions.append((lat, lon))
+        #        print("GPS RECEIVED!!")        
         if(shared_data["manualOverride"]):
             left = float(shared_data["speedLeft"])
             right = float(shared_data["speedRight"])
@@ -242,7 +242,7 @@ def main(shared_data):
             targetCoordinates = (shared_data["targetLat"], shared_data["targetLong"])
             thetaBias = 2.43
             print("GETTING THETA!!")
-            currentTheta = getSmoothAzimuth(sensor) - thetaBias
+            #currentTheta = getSmoothAzimuth(sensor) - thetaBias
             print("CURRENT THETA: " + str(currentTheta))
                 
             #gains = [9.0, 2.0, 0.0, 0.0, math.radians(45.0), 0.0, 0.0, 0.5]  # [k1, k2, k3, k4, k5, k6, k7, k8]
