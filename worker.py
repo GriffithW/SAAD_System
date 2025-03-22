@@ -174,10 +174,12 @@ def main(shared_data):
     # Clock (PWM frequency in Hz)
     #CLOCK = 50
     
-    ser = serial.Serial('/dev/ttyACM0', 38400, timeout=1)
+    # ser = serial.Serial('/dev/ttyACM0', 38400, timeout=1)
 
-    rightMotor = ArduinoESC(ser, 'b')
-    leftMotor = ArduinoESC(ser, 'a')
+    # rightMotor = ArduinoESC(ser, 'b')
+    # leftMotor = ArduinoESC(ser, 'a')
+    
+    
     #right_motor_control = ZMREsc(pin=LEFT_MOTOR)
     #left_motor_control = ZMREsc(pin=RIGHT_MOTOR)
 
@@ -188,17 +190,15 @@ def main(shared_data):
     pastGPSPositions.append((32.23132366727646, -110.95729089480041))
     pastGPSPositions.append((32.23132864818837, -110.9574352940373))
     pastGPSPositions.append((32.231332086967264, -110.95781008036023))
-
-    targetCoordinates = (32.2822648, -111.0340554)
+    
+    shared_data["target_lats"].append(32.2822648)
+    shared_data["target_longs"].append(-111.0340554)
 
     # Initialize sensor
     sensor = QMC5883LCompass()
     sensor.init()
     #sensor.calibrate()
     #sleep(100)
-    #sensor.setCalibration(-1602.0, 1203.0, 
-    #    -1975.0, 563, 
-    #    -1578.0, 1121)
         
     sensor.setCalibration(0, 1633.0, 
         -361.0, 993.0, 
@@ -206,8 +206,8 @@ def main(shared_data):
 
 
     # calibrateThrusters()
-    rightMotor.sendCommand(0.0)
-    leftMotor.sendCommand(0)
+    # rightMotor.sendCommand(0.0)
+    # leftMotor.sendCommand(0)
     sleep(3)
     print("Thrusters initialized.")
 
@@ -234,24 +234,43 @@ def main(shared_data):
             right = float(shared_data["speedRight"])
             if(last_left != left):
                 last_left = left
-                leftMotor.sendCommand(left)
+                # leftMotor.sendCommand(left)
             if(last_right != right):
-                rightMotor.sendCommand(right)
+                # rightMotor.sendCommand(right)
                 last_right = right
         else:
-            targetCoordinates = (shared_data["targetLat"], shared_data["targetLong"])
-            thetaBias = 2.43
-            print("GETTING THETA!!")
-            #currentTheta = getSmoothAzimuth(sensor) - thetaBias
-            print("CURRENT THETA: " + str(currentTheta))
-                
-            #gains = [9.0, 2.0, 0.0, 0.0, math.radians(45.0), 0.0, 0.0, 0.5]  # [k1, k2, k3, k4, k5, k6, k7, k8]
             
-            #pwmValues = thruster_control(targetCoordinates[0], targetCoordinates[1], gains, lat, lon, currentTheta)
-            pwmValues = control_code(targetCoordinates[0], targetCoordinates[1], pastGPSPositions[0][0], pastGPSPositions[0][1], currentTheta)
-            #rightMotor.sendCommand(pwmValues[0])
-            #leftMotor.sendCommand(pwmValues[1])
-            #print(pwmValues)
+            distToTarget = calculate_distance(shared_data["target_lats"][0], shared_data["target_longs"][0], curr_lat, curr_long)
+            if(distToTarget < 5):
+                test1 = shared_data["target_lats"]
+                test2 = shared_data["target_longs"]
+                test1.pop()
+                test2.pop()
+                shared_data["target_lats"] = test1
+                shared_data["target_longs"] = test2
+                
+                
+                
+            targetCoordinates = (0, 0)
+            if(len(shared_data["target_lats"]) > 0):
+                targetCoordinates = (shared_data["target_lats"][0], shared_data["target_longs"][0])
+                
+                thetaBias = 2.43
+                print("GETTING THETA!!")
+                #currentTheta = getSmoothAzimuth(sensor) - thetaBias
+                print("CURRENT THETA: " + str(currentTheta))
+                    
+                #gains = [9.0, 2.0, 0.0, 0.0, math.radians(45.0), 0.0, 0.0, 0.5]  # [k1, k2, k3, k4, k5, k6, k7, k8]
+                
+                #pwmValues = thruster_control(targetCoordinates[0], targetCoordinates[1], gains, lat, lon, currentTheta)
+                pwmValues = control_code(targetCoordinates[0], targetCoordinates[1], pastGPSPositions[0][0], pastGPSPositions[0][1], currentTheta)
+                #rightMotor.sendCommand(pwmValues[0])
+                #leftMotor.sendCommand(pwmValues[1])
+            else:
+                test = 1
+                # LIGHTS ON PACKAGE ARRIVED!!
+                
+            
 
 
 import time
@@ -267,14 +286,20 @@ if __name__ == "__main__":
         shared_data["onLand"] = False
         shared_data["command"] = "stop"
         shared_data["basicSpeed"] = 0
-        shared_data["target_coordinates"] = "NA"
+        shared_data["target_lats"] = collections.deque([0] * 5, maxlen=5)
+        shared_data["target_longs"] = collections.deque([0] * 5, maxlen=5)
         shared_data["speedRight"] = 0
         shared_data["speedLeft"] = 0
         shared_data["currLat"] = 0
         shared_data["currLong"] = 0
         shared_data["targetLat"] = 0
         shared_data["targetLong"] = 0
-
+        shared_data["batteryLevel"] = 100
+        
+        print(list(shared_data["target_lats"]))
+        print(list(shared_data["target_longs"]))
+        
+        
         # Start worker and web server processes
         worker_process = Process(target=main, args=(shared_data,))
         server_process = Process(target=run_server, args=(shared_data,))
@@ -292,20 +317,20 @@ if __name__ == "__main__":
         cleanupGPS()
 
 
-if __name__ == "__main__":
-    # Initialize the Manager and shared dictionary
-    manager = Manager()
-    shared_data = manager.dict()
-    shared_data["message"] = "Worker starting up..."
-    shared_data["target_coordinates"] = "NA"
-
-    # Start worker and web server processes
-    worker_process = Process(target=worker_task, args=(shared_data,))
-    server_process = Process(target=run_server, args=(shared_data,))
-
-    worker_process.start()
-    server_process.start()
-
-    # Wait for processes to finish
-    worker_process.join()
-    server_process.join()
+# if __name__ == "__main__":
+#     # Initialize the Manager and shared dictionary
+#     manager = Manager()
+#     shared_data = manager.dict()
+#     shared_data["message"] = "Worker starting up..."
+#     shared_data["target_coordinates"] = collections.deque(maxlen=5)
+# 
+#     # Start worker and web server processes
+#     worker_process = Process(target=worker_task, args=(shared_data,))
+#     server_process = Process(target=run_server, args=(shared_data,))
+# 
+#     worker_process.start()
+#     server_process.start()
+# 
+#     # Wait for processes to finish
+#     worker_process.join()
+#     server_process.join()

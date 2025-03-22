@@ -38,7 +38,6 @@
             STOP: "stop"
         };
         
-        target_coordinates = "NA";
         lastCommand = commands.STOP;
         basicSpeed = 0;
         speedRight = 0;
@@ -47,10 +46,27 @@
         onLandValue = false;
         currLat = 0;
         currLong = 0;
-        targetLat = 0;
-        targetLong = 0;
+        targetLat0 = 0;
+        targetLong0 = 0;
+        targetLat1 = 0;
+        targetLong1 = 0;
+        targetLat2 = 0;
+        targetLong2 = 0;
+        targetLat3 = 0;
+        targetLong3 = 0;
+        targetLat4 = 0;
+        targetLong4 = 0;
+        curr_battery = 100
         
         function updateFields() {   
+            fetch('/get_curr_battery')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the message display
+                    curr_battery = data.currBattery;
+                })
+                .catch(error => console.error('Error fetching message:', error));
+            
             fetch('/get_curr_lat')
                 .then(response => response.json())
                 .then(data => {
@@ -67,19 +83,83 @@
                 })
                 .catch(error => console.error('Error fetching message:', error));
                 
-            fetch('/get_target_lat')
+            fetch('/get_target_lat0')
                 .then(response => response.json())
                 .then(data => {
                     // Update the message display
-                    targetLat = data.targetLat;
+                    targetLat0 = data.targetLat;
                 })
                 .catch(error => console.error('Error fetching message:', error));
                 
-            fetch('/get_target_long')
+            fetch('/get_target_long0')
                 .then(response => response.json())
                 .then(data => {
                     // Update the message display
-                    targetLong = data.targetLong;
+                    targetLong0 = data.targetLong;
+                })
+                .catch(error => console.error('Error fetching message:', error));
+                
+            fetch('/get_target_lat1')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the message display
+                    targetLat1 = data.targetLat;
+                })
+                .catch(error => console.error('Error fetching message:', error));
+                
+            fetch('/get_target_long1')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the message display
+                    targetLong1 = data.targetLong;
+                })
+                .catch(error => console.error('Error fetching message:', error));
+                
+            fetch('/get_target_lat2')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the message display
+                    targetLat2 = data.targetLat;
+                })
+                .catch(error => console.error('Error fetching message:', error));
+                
+            fetch('/get_target_long2')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the message display
+                    targetLong2 = data.targetLong;
+                })
+                .catch(error => console.error('Error fetching message:', error));
+                
+            fetch('/get_target_lat3')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the message display
+                    targetLat3 = data.targetLat;
+                })
+                .catch(error => console.error('Error fetching message:', error));
+                
+            fetch('/get_target_long3')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the message display
+                    targetLong3 = data.targetLong;
+                })
+                .catch(error => console.error('Error fetching message:', error));
+                
+            fetch('/get_target_lat4')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the message display
+                    targetLat4 = data.targetLat;
+                })
+                .catch(error => console.error('Error fetching message:', error));
+                
+            fetch('/get_target_long4')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the message display
+                    targetLong4 = data.targetLong;
                 })
                 .catch(error => console.error('Error fetching message:', error));
                      
@@ -96,14 +176,6 @@
                 .then(data => {
                     // Update the message display
                     speedLeft = data.speedLeft;
-                })
-                .catch(error => console.error('Error fetching message:', error));
-                
-            fetch('/get_target_coordinates')
-                .then(response => response.json())
-                .then(data => {
-                    // Update the message display
-                    target_coordinates = data.target_coordinates;
                 })
                 .catch(error => console.error('Error fetching message:', error));
         
@@ -161,8 +233,27 @@
             <input type="text" id="user-input" placeholder="Enter a new message" required>
             <button type="setCoordinates">Set Coordinates</button>
         </form>
+        <p>Current Battery Level:</p><span id="curr_battery">0</span>
         <p>Current Target Coordinates:</p>
-        <span id="curr_target_lat">0</span><span>, </span></span><span id="curr_target_long">0</span>
+        <div>
+            <span id="curr_target_lat0">0</span><span>, </span></span><span id="curr_target_long0">0</span>
+        </div>
+        
+        <div>
+            <span id="curr_target_lat1">0</span><span>, </span></span><span id="curr_target_long1">0</span>
+        </div>
+        
+        <div>
+            <span id="curr_target_lat2">0</span><span>, </span></span><span id="curr_target_long2">0</span>
+        </div>
+        
+        <div>
+            <span id="curr_target_lat3">0</span><span>, </span></span><span id="curr_target_long3">0</span>
+        </div>
+        
+        <div>
+            <span id="curr_target_lat4">0</span><span>, </span></span><span id="curr_target_long4">0</span>
+        </div>
     </div>
     <div class="manual-override">
         <p>Manual Override?</p>
@@ -398,23 +489,56 @@
         }
         
         function loadVisuals() {
+            if(document.getElementById('curr_battery').textContent != curr_battery) {
+                document.getElementById('curr_battery').textContent = curr_battery;
+            }
+            
             if(document.getElementById('curr_lat').textContent != currLat) {
                 document.getElementById('curr_lat').textContent = currLat;
             }
-            
-            console.log("CURRENT LONG:");
-            console.log(currLong);
 
             if(document.getElementById('curr_long').textContent != currLong) {
                 document.getElementById('curr_long').textContent = currLong;
             }
             
-            if(document.getElementById('curr_target_lat').textContent != targetLat) {
-                document.getElementById('curr_target_lat').textContent = targetLat;
+            if(document.getElementById('curr_target_lat0').textContent != targetLat0) {
+                document.getElementById('curr_target_lat0').textContent = targetLat0;
             }
             
-            if(document.getElementById('curr_target_long').textContent != targetLong) {
-                document.getElementById('curr_target_long').textContent = targetLong;
+            if(document.getElementById('curr_target_long0').textContent != targetLong0) {
+                document.getElementById('curr_target_long0').textContent = targetLong0;
+            }
+            
+            if(document.getElementById('curr_target_lat1').textContent != targetLat1) {
+                document.getElementById('curr_target_lat1').textContent = targetLat1;
+            }
+            
+            if(document.getElementById('curr_target_long1').textContent != targetLong1) {
+                document.getElementById('curr_target_long1').textContent = targetLong1;
+            }
+            
+            if(document.getElementById('curr_target_lat2').textContent != targetLat2) {
+                document.getElementById('curr_target_lat2').textContent = targetLat2;
+            }
+            
+            if(document.getElementById('curr_target_long2').textContent != targetLong2) {
+                document.getElementById('curr_target_long2').textContent = targetLong2;
+            }
+            
+            if(document.getElementById('curr_target_lat3').textContent != targetLat3) {
+                document.getElementById('curr_target_lat3').textContent = targetLat3;
+            }
+            
+            if(document.getElementById('curr_target_long3').textContent != targetLong3) {
+                document.getElementById('curr_target_long3').textContent = targetLong3;
+            }
+            
+            if(document.getElementById('curr_target_lat4').textContent != targetLat4) {
+                document.getElementById('curr_target_lat4').textContent = targetLat4;
+            }
+            
+            if(document.getElementById('curr_target_long4').textContent != targetLong4) {
+                document.getElementById('curr_target_long4').textContent = targetLong4;
             }
             
             if(document.getElementById('speedValueRight').value != speedRight) {

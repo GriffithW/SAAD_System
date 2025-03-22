@@ -35,6 +35,11 @@ def video_feed():
     """Video streaming route."""
     return Response(gen(Camera()), mimetype='multipart/x-mixed-replace; boundary=frame')
 
+@app.route('/get_curr_battery', methods=['GET'])
+def get_curr_battery():
+    global shared_data
+    return jsonify({"currBattery": shared_data["batteryLevel"]})
+
 @app.route('/get_curr_lat', methods=['GET'])
 def get_curr_lat():
     global shared_data
@@ -45,15 +50,55 @@ def get_curr_long():
     global shared_data
     return jsonify({"currLong": shared_data["currLong"]})
     
-@app.route('/get_target_lat', methods=['GET'])
-def get_target_lat():
+@app.route('/get_target_lat0', methods=['GET'])
+def get_target_lat0():
     global shared_data
-    return jsonify({"targetLat": shared_data["targetLat"]})
+    return jsonify({"targetLat": shared_data["target_lats"][0]})
     
-@app.route('/get_target_long', methods=['GET'])
-def get_target_long():
+@app.route('/get_target_long0', methods=['GET'])
+def get_target_long0():
     global shared_data
-    return jsonify({"targetLong": shared_data["targetLong"]})
+    return jsonify({"targetLong": shared_data["target_longs"][0]})
+    
+@app.route('/get_target_lat1', methods=['GET'])
+def get_target_lat1():
+    global shared_data
+    return jsonify({"targetLat": shared_data["target_lats"][1]})
+    
+@app.route('/get_target_long1', methods=['GET'])
+def get_target_long1():
+    global shared_data
+    return jsonify({"targetLong": shared_data["target_longs"][1]})
+    
+@app.route('/get_target_lat2', methods=['GET'])
+def get_target_lat2():
+    global shared_data
+    return jsonify({"targetLat": shared_data["target_lats"][2]})
+    
+@app.route('/get_target_long2', methods=['GET'])
+def get_target_long2():
+    global shared_data
+    return jsonify({"targetLong": shared_data["target_longs"][2]})
+
+@app.route('/get_target_lat3', methods=['GET'])
+def get_target_lat3():
+    global shared_data
+    return jsonify({"targetLat": shared_data["target_lats"][3]})
+    
+@app.route('/get_target_long3', methods=['GET'])
+def get_target_long3():
+    global shared_data
+    return jsonify({"targetLong": shared_data["target_longs"][3]})
+
+@app.route('/get_target_lat4', methods=['GET'])
+def get_target_lat4():
+    global shared_data
+    return jsonify({"targetLat": shared_data["target_lats"][4]})
+    
+@app.route('/get_target_long4', methods=['GET'])
+def get_target_long4():
+    global shared_data
+    return jsonify({"targetLong": shared_data["target_longs"][4]})
 
 @app.route('/get_manual_override', methods=['GET'])
 def get_manual_override():
@@ -74,11 +119,6 @@ def get_message():
 def get_basic_speed():
     global shared_data
     return jsonify({"basicSpeed": shared_data["basicSpeed"]})
-    
-@app.route('/get_target_coordinates', methods=['GET'])
-def get_target_coordinates():
-    global shared_data
-    return jsonify({"target_coordinates": shared_data["target_coordinates"]})
 
 @app.route('/get_speed_left', methods=['GET'])
 def get_speed_left():
@@ -89,6 +129,11 @@ def get_speed_left():
 def get_speed_right():
     global shared_data
     return jsonify({"speedRight": shared_data["speedRight"]})
+
+
+
+
+
 
 
 
@@ -148,8 +193,19 @@ def set_coordinates():
     
     success, target_lat, target_long = parseFloats(user_input)
     if(success): 
-        shared_data["targetLat"] = target_lat  # Update shared data
-        shared_data["targetLong"] = target_long  # Update shared data
+        
+        test1 = shared_data["target_lats"]
+        test2 = shared_data["target_longs"]
+        test1.pop()
+        test2.pop()
+        test1.appendleft(target_lat)  # Update shared data
+        test2.appendleft(target_long)  # Update shared data
+        
+        shared_data["target_lats"] = test1
+        shared_data["target_longs"] = test2
+        
+        print(list(shared_data["target_lats"]))
+        print(list(shared_data["target_longs"]))
 
     print("COORDINATES RECEIVED!: " + str(user_input))
     return jsonify({"status": "success", "message": "Data updated!"})
