@@ -76,7 +76,7 @@ def get_point_cloud(device_id, width=640, height=480):
     print("No depth frame found in frame_data")
     return None
 
-def downsample_point_cloud(points, voxel_size=0.05):
+def downsample_point_cloud(points, voxel_size=0.001):
     if points is None or len(points) == 0:
         return None
     min_bound = points.min(axis=0)
@@ -84,7 +84,7 @@ def downsample_point_cloud(points, voxel_size=0.05):
     unique_voxels, indices = np.unique(voxel_index, axis=0, return_index=True)
     return points[indices]
 
-def detect_objects(point_cloud, eps=0.5, min_samples=5, depth_range=(0.5, 50.0), fov=(-45, 45)):
+def detect_objects(point_cloud, eps=.2, min_samples=10, depth_range=(0.1, 100.0), fov=(-45, 45)):
     if point_cloud is None or len(point_cloud) == 0:
         return 0, []
     valid_mask = (point_cloud[:, 2] > depth_range[0]) & (point_cloud[:, 2] < depth_range[1])
