@@ -1,32 +1,91 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thruster Control GUI</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f4f4f9;
+body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        h2 {
+            color: #007bff;
+        }
+        .section-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
         }
         .button {
-            display: inline-block;
-            margin: 10px;
-            padding: 15px 25px;
-            font-size: 18px;
-            color: #fff;
-            background-color: #007bff;
-            border: none;
+            margin: 5px;
+            padding: 12px 24px;
+            font-size: 16px;
             border-radius: 5px;
-            cursor: pointer;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s ease;
         }
         .button:hover {
             background-color: #0056b3;
         }
-        .slider-container {
-            margin: 20px;
+        .slider-container label {
+            font-weight: 500;
+            margin-right: 10px;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider.round {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider.round:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        .switch input:checked + .slider.round {
+            background-color: #007bff;
+        }
+        .switch input:checked + .slider.round:before {
+            transform: translateX(26px);
+        }
+        .controller-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            justify-items: center;
+            align-items: center;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        .target-coord-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 5px;
+            margin-top: 10px;
+        }
+        .target-coord-list span {
+            text-align: center;
         }
     </style>
     <script>
@@ -222,78 +281,83 @@
     </script>
 </head>
 <body>
-    <img src="{{ url_for('video_feed') }}">
-    <div class="curr-coord-container">
-        <p>Current Coordinates:</p>
-        <span id="curr_lat">Loading..</span><span>, </span></span><span id="curr_long"></span>
+    <div class="text-center mb-4">
+        <h2>SAAD System Control Panel</h2>
     </div>
-    <div class="target-coord-container">
-        <label for="coords">Set Target Coordinates: </label>
+
+    <div class="section-card">
+        <p><strong>Current Coordinates:</strong></p>
+        <span id="curr_lat">Loading..</span>, <span id="curr_long"></span>
+    </div>
+
+    <div class="section-card">
         <form id="update-form" onsubmit="setCoordinates(event)">
-            <input type="text" id="user-input" placeholder="Enter a new message" required>
-            <button type="setCoordinates">Set Coordinates</button>
+            <label for="coords">Set Target Coordinates:</label>
+            <input type="text" id="user-input" placeholder="Enter new coordinates" required>
+            <button class="button" type="submit">Set Coordinates</button>
         </form>
-        <p>Current Battery Level:</p><span id="curr_battery">0</span>
-        <p>Current Target Coordinates:</p>
-        <div>
-            <span id="curr_target_lat0">0</span><span>, </span></span><span id="curr_target_long0">0</span>
-        </div>
-        
-        <div>
-            <span id="curr_target_lat1">0</span><span>, </span></span><span id="curr_target_long1">0</span>
-        </div>
-        
-        <div>
-            <span id="curr_target_lat2">0</span><span>, </span></span><span id="curr_target_long2">0</span>
-        </div>
-        
-        <div>
-            <span id="curr_target_lat3">0</span><span>, </span></span><span id="curr_target_long3">0</span>
-        </div>
-        
-        <div>
-            <span id="curr_target_lat4">0</span><span>, </span></span><span id="curr_target_long4">0</span>
+    </div>
+
+    <div class="section-card">
+        <p><strong>Current Battery Level:</strong> <span id="curr_battery">0</span>%</p>
+        <p><strong>Target Coordinates:</strong></p>
+        <div class="target-coord-list">
+            <span><span id="curr_target_lat0">0</span>, <span id="curr_target_long0">0</span></span>
+            <span><span id="curr_target_lat1">0</span>, <span id="curr_target_long1">0</span></span>
+            <span><span id="curr_target_lat2">0</span>, <span id="curr_target_long2">0</span></span>
+            <span><span id="curr_target_lat3">0</span>, <span id="curr_target_long3">0</span></span>
+            <span><span id="curr_target_lat4">0</span>, <span id="curr_target_long4">0</span></span>
         </div>
     </div>
-    <div class="manual-override">
-        <p>Manual Override?</p>
+
+    <div class="section-card">
+        <p><strong>Manual Override?</strong></p>
         <label class="switch">
             <input type="checkbox" id="manualOverride" onclick="manualOverride()">
             <span class="slider round"></span>
         </label>
     </div>
-    <div class="on-land">
-        <p>On land?</p>
+
+    <div class="section-card">
+        <p><strong>On Land?</strong></p>
         <label class="switch">
             <input type="checkbox" id="onLand" onclick="onLand()">
             <span class="slider round"></span>
         </label>
     </div>
-    <div class="slider-container">
-        <label for="basicSpeedLeft">Basic Controls Speed: </label>
+
+    <div class="section-card">
+        <label for="basicControlsSpeed">Basic Controls Speed:</label>
         <input type="range" id="basicControlsSpeed" min="0" max="100" value="0" onchange="setBasicSpeed(this.value)">
         <span id="basisControlSpeedValue">0</span>
     </div>
-    <div>
-        <button class="button" onclick="sendCommand('forward')">Forward</button>
+
+    <div class="section-card text-center">
+        <h5>Thruster Commands</h5>
+        <div class="controller-layout">
+            <div></div>
+            <button class="button" onclick="sendCommand('forward')">Forward</button>
+            <div></div>
+
+            <button class="button" onclick="sendCommand('left')">Left</button>
+            <button class="button" onclick="sendCommand('stop')">Stop</button>
+            <button class="button" onclick="sendCommand('right')">Right</button>
+
+            <div></div>
+            <button class="button" onclick="sendCommand('backward')">Backward</button>
+            <div></div>
+        </div>
     </div>
-    <div>
-        <button class="button" onclick="sendCommand('left')">Left</button>
-        <button class="button" onclick="sendCommand('stop')">Stop</button>
-        <button class="button" onclick="sendCommand('right')">Right</button>
-    </div>
-    <div>
-        <button class="button" onclick="sendCommand('backward')">Backward</button>
-    </div>
-    <div class="slider-container">
-        <label for="speedLeft">Speed Left: </label>
+
+    <div class="section-card">
+        <label for="speedLeft">Speed Left:</label>
         <input type="range" id="speedLeft" min="-100" max="100" value="0" onchange="updateSpeedLeft(this.value)">
         <span id="speedValueLeft">0</span>
-        <label style="margin-left: 50px;" for="speedRight">Speed Right: </label>
+        <br><br>
+        <label for="speedRight">Speed Right:</label>
         <input type="range" id="speedRight" min="-100" max="100" value="0" onchange="updateSpeedRight(this.value)">
         <span id="speedValueRight">0</span>
     </div>
-
     <script>
         function manualOverride() {
             console.log("Manual Override value: ", document.getElementById('manualOverride').checked);
