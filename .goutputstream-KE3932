@@ -1,0 +1,52 @@
+import serial
+import time
+
+class ArduinoESC:
+	def __init__(self, serialIn, motorChar):
+		"""
+		Initialize the ZMR ESC for standard range calibration.
+
+		Parameters:
+		- pin: GPIO pin connected to the ESC signal wire.
+		- frequency: PWM frequency, typically 50 Hz for ESCs.
+		"""
+		self.ser = serialIn
+		self.motorChar = motorChar;
+        
+	def sendCommand(self, speed):
+		string = self.motorChar + str(int(speed)) + '\n'
+		print(string)
+		self.ser.write(string.encode())
+	
+	def reqVoltage(self):
+		string = 'd' + '\n'
+		self.ser.flush()
+		self.ser.write(string.encode())
+		time.sleep(0.1)
+		if self.ser.in_waiting > 0:
+			output = self.ser.readline().decode('utf-8').strip()
+			try:
+				return int(output)
+			except ValueError as e:
+				return 0.0
+				 
+	def reqMag(self):
+		string = 'e' + '\n'
+		self.ser.flush()
+		self.ser.write(string.encode())
+		time.sleep(0.1)
+		if self.ser.in_waiting > 0:
+			output = self.ser.readline().decode('utf-8').strip()
+			try:
+				return int(output)
+			except ValueError as e:
+				return 0.0
+				
+	def lightOff(self):
+		string = 'o' + '\n'
+		self.ser.write(string.encode())
+	
+	def lightOn(self):
+		string = 'f' + '\n'
+		self.ser.write(string.encode())
+		

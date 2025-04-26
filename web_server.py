@@ -109,6 +109,11 @@ def get_manual_override():
 def get_on_land():
     global shared_data
     return jsonify({"onLand": shared_data["onLand"]})
+    
+@app.route('/get_light_on', methods=['GET'])
+def get_light_on():
+    global shared_data
+    return jsonify({"lightOn": shared_data["lightOn"]})
 
 @app.route('/get_command', methods=['GET'])
 def get_message():
@@ -130,7 +135,10 @@ def get_speed_right():
     global shared_data
     return jsonify({"speedRight": shared_data["speedRight"]})
 
-
+@app.route('/get_curr_heading', methods=['GET'])
+def get_curr_heading():
+    global shared_data
+    return jsonify({"currHeading": shared_data["heading_string"]})
 
 
 
@@ -151,6 +159,14 @@ def onLand():
     global shared_data
     user_input = request.json.get("value")
     shared_data["onLand"] = user_input  # Update shared data
+    print("MESSAGE RECEIVED: " + str(user_input))
+    return jsonify({"status": "success", "message": "Data updated!"})
+    
+@app.route('/lightOn', methods=['POST'])
+def lightOn():
+    global shared_data
+    user_input = request.json.get("value")
+    shared_data["lightOn"] = user_input  # Update shared data
     print("MESSAGE RECEIVED: " + str(user_input))
     return jsonify({"status": "success", "message": "Data updated!"})
     

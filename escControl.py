@@ -14,7 +14,42 @@ class ArduinoESC:
 		self.motorChar = motorChar;
         
 	def sendCommand(self, speed):
-		string = self.motorChar + str(int(speed)) + '\n'
+		if(self.motorChar == 'b'):
+			string = self.motorChar + str(int(speed)) + '\n'
+		else:
+			string = self.motorChar + str(-int(speed)) + '\n'
 		print(string)
+		self.ser.write(string.encode())
+	
+	def reqVoltage(self):
+		string = 'd' + '\n'
+		self.ser.flush()
+		self.ser.write(string.encode())
+		time.sleep(0.1)
+		if self.ser.in_waiting > 0:
+			output = self.ser.readline().decode('utf-8').strip()
+			try:
+				return int(output)
+			except ValueError as e:
+				return 0.0
+				 
+	def reqMag(self):
+		string = 'e' + '\n'
+		self.ser.flush()
+		self.ser.write(string.encode())
+		time.sleep(0.1)
+		if self.ser.in_waiting > 0:
+			output = self.ser.readline().decode('utf-8').strip()
+			try:
+				return int(output)
+			except ValueError as e:
+				return 0.0
+				
+	def lightOff(self):
+		string = 'o' + '\n'
+		self.ser.write(string.encode())
+	
+	def lightOn(self):
+		string = 'f' + '\n'
 		self.ser.write(string.encode())
 		

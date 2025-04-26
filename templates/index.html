@@ -103,6 +103,7 @@ body {
         speedLeft = 0;
         manualOverrideValue = false;
         onLandValue = false;
+        lightOn = false;
         currLat = 0;
         currLong = 0;
         targetLat0 = 0;
@@ -115,7 +116,9 @@ body {
         targetLong3 = 0;
         targetLat4 = 0;
         targetLong4 = 0;
-        curr_battery = 100
+        curr_battery = 100;
+        curr_heading = "NNN 0";
+        notified = 0;
         
         function updateFields() {   
             fetch('/get_curr_battery')
@@ -123,6 +126,10 @@ body {
                 .then(data => {
                     // Update the message display
                     curr_battery = data.currBattery;
+                    if(parseInt(curr_battery.replace('%', ''), 10) < 60 && notified === 0) {
+                        notified = 1;
+                        alert("Note: Battery level is below 60%!!");
+                    }
                 })
                 .catch(error => console.error('Error fetching message:', error));
             
@@ -269,6 +276,22 @@ body {
                     onLandValue = data.onLand;
                 })
                 .catch(error => console.error('Error fetching message:', error));
+                
+            fetch('/get_light_on')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the message display
+                    lightOn = data.lightOn;
+                })
+                .catch(error => console.error('Error fetching message:', error));
+                
+            fetch('/get_curr_heading')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the message display
+                    curr_heading = data.currHeading;
+                })
+                .catch(error => console.error('Error fetching message:', error));
         
             loadVisuals();
         }
@@ -296,6 +319,29 @@ body {
             <input type="text" id="user-input" placeholder="Enter new coordinates" required>
             <button class="button" type="submit">Set Coordinates</button>
         </form>
+<<<<<<< HEAD
+        <p>Current Battery Level:</p><p id="curr_battery">0</p>
+        <p>Current Heading:</p><span id="curr_heading">NNN 0</span>
+        <p>Current Target Coordinates:</p>
+        <div>
+            <span id="curr_target_lat0">0</span><span>, </span></span><span id="curr_target_long0">0</span>
+        </div>
+        
+        <div>
+            <span id="curr_target_lat1">0</span><span>, </span></span><span id="curr_target_long1">0</span>
+        </div>
+        
+        <div>
+            <span id="curr_target_lat2">0</span><span>, </span></span><span id="curr_target_long2">0</span>
+        </div>
+        
+        <div>
+            <span id="curr_target_lat3">0</span><span>, </span></span><span id="curr_target_long3">0</span>
+        </div>
+        
+        <div>
+            <span id="curr_target_lat4">0</span><span>, </span></span><span id="curr_target_long4">0</span>
+=======
     </div>
 
     <div class="section-card">
@@ -307,6 +353,7 @@ body {
             <span><span id="curr_target_lat2">0</span>, <span id="curr_target_long2">0</span></span>
             <span><span id="curr_target_lat3">0</span>, <span id="curr_target_long3">0</span></span>
             <span><span id="curr_target_lat4">0</span>, <span id="curr_target_long4">0</span></span>
+>>>>>>> 999d55bc3738c67bd6b0cdc16042d632fe6f085d
         </div>
     </div>
 
@@ -325,9 +372,21 @@ body {
             <span class="slider round"></span>
         </label>
     </div>
+<<<<<<< HEAD
+    <div class="light-on">
+        <p>Light On?</p>
+        <label class="switch">
+            <input type="checkbox" id="lightOn" onclick="lightOnFunc()">
+            <span class="slider round"></span>
+        </label>
+    </div>
+    <div class="slider-container">
+        <label for="basicSpeedLeft">Basic Controls Speed: </label>
+=======
 
     <div class="section-card">
         <label for="basicControlsSpeed">Basic Controls Speed:</label>
+>>>>>>> 999d55bc3738c67bd6b0cdc16042d632fe6f085d
         <input type="range" id="basicControlsSpeed" min="0" max="100" value="0" onchange="setBasicSpeed(this.value)">
         <span id="basisControlSpeedValue">0</span>
     </div>
@@ -395,6 +454,25 @@ body {
             }).catch(error => console.error('Fetch error:', error));
             
             onLandValue = document.getElementById('onLand').checked;
+        }
+        
+        function lightOnFunc() {
+            console.log("Manual Override value: ", document.getElementById('lightOn').checked);
+            fetch('/lightOn', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ value: document.getElementById('lightOn').checked })
+            }).then(response => {
+                if (response.ok) {
+                    console.log('On Land: ', document.getElementById('onLand').checked);
+                } else {
+                    console.error('On Land: ', document.getElementById('onLand').checked);
+                }
+            }).catch(error => console.error('Fetch error:', error));
+            
+            lightOn = document.getElementById('lightOn').checked;
         }
         
         function sendCommand(command) {
@@ -553,6 +631,10 @@ body {
         }
         
         function loadVisuals() {
+            if(document.getElementById('curr_heading').textContent != curr_heading) {
+                document.getElementById('curr_heading').textContent = curr_heading;
+            }
+            
             if(document.getElementById('curr_battery').textContent != curr_battery) {
                 document.getElementById('curr_battery').textContent = curr_battery;
             }
@@ -625,10 +707,13 @@ body {
                 document.getElementById('manualOverride').checked = manualOverrideValue;
             }
             
+            if(document.getElementById('lightOn').checked != lightOn) {
+                document.getElementById('lightOn').checked = lightOn;
+            }
             
             
             
-            console.log("Target Coords: ", target_coordinates);
+            
             console.log("Speed Left: ", speedRight);
             console.log("Speed Right: ", speedLeft);
             console.log("Basic Speed: ", basicSpeed);

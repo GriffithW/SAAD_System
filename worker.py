@@ -7,7 +7,7 @@ import gpiozero
 from time import sleep
 import numpy as np
 import sys
-#import gps
+import gps
 import collections
 import serial
 import math
@@ -43,7 +43,7 @@ def setGPSPollingRate():
     send_command(gps_serial, fix_rate_command)
 
     print("Polling rate maximized to 10 Hz. Verifying...")
-    while True:
+    while True: 
         # Read GPS output to confirm new rate
         data = gps_serial.readline().decode('ascii', errors='ignore')
         if data:
@@ -164,9 +164,16 @@ def control_code(target_lat, target_long, curr_lat, curr_long, heading):
     
     return (left_thrust, right_thrust)
 
+def degrees_to_compass(degrees):
+    directions = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", 
+                  "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
+    
+    index = round(degrees / 22.5) % 16  # 360/16 = 22.5 degrees per direction
+    return directions[index]
+
 def main(shared_data):
     # Connect to the gpsd daemon
-    #session = gps.gps(mode=gps.WATCH_ENABLE)
+    session = gps.gps(mode=gps.WATCH_ENABLE)
     # Pin configuration
     #LEFT_MOTOR = 12
     #RIGHT_MOTOR = 13  # GPIO pin connected to the PWM device
@@ -174,10 +181,12 @@ def main(shared_data):
     # Clock (PWM frequency in Hz)
     #CLOCK = 50
     
-    # ser = serial.Serial('/dev/ttyACM0', 38400, timeout=1)
+    ser = serial.Serial('/dev/ttyACM0', 38400, timeout=1)
 
-    # rightMotor = ArduinoESC(ser, 'b')
-    # leftMotor = ArduinoESC(ser, 'a')
+    rightMotor = ArduinoESC(ser, 'b')
+    leftMotor = ArduinoESC(ser, 'a')
+    leftGroundMotor = ArduinoESC(ser, 'y')
+    rightGroundMotor = ArduinoESC(ser, 'z')
     
     
     #right_motor_control = ZMREsc(pin=LEFT_MOTOR)
@@ -206,40 +215,82 @@ def main(shared_data):
 
 
     # calibrateThrusters()
-    # rightMotor.sendCommand(0.0)
-    # leftMotor.sendCommand(0)
+    rightMotor.sendCommand(0.0)
+    leftMotor.sendCommand(0.0)
+    rightGroundMotor.sendCommand(0.0)
+    leftGroundMotor.sendCommand(0.0)
     sleep(3)
     print("Thrusters initialized.")
 
     prevPWM = (0.0, 0.0)
     last_left = 0.0
     last_right = 0.0
+    last_ground_left = 0.0
+    last_ground_right = 0.0
     counter = 0
+    lastLight = False
     while True:
-        sleep(0.25)  # Adjust sleep time as needed
+        shared_data["batteryLevel"] = str(55 + 0 * int(leftMotor.reqVoltage())) + "%"
+        shared_data["heading"] = 91 + 0 * int(leftMotor.reqMag())
+        print(shared_data["heading"])
+        shared_data["heading_string"] = degrees_to_compass(shared_data["heading"]) + " " + str(shared_data["heading"])
+        sleep(0.05)  # Adjust sleep time as needed
         #print("COUNTER: " + str(counter))
-        #counter = counter + 1
-        #if(counter == 4):
-        #    print("READING GPS!!")
-        #    success, lat, lon = readGPS(session)
-        #    counter = 0
-        #    if(success):
-        #        print("SUCCESS!!" + str(lat) + " " + str(lon))
-        #        shared_data["currLat"] = lat
-        #        shared_data["currLong"] = lon
-        #        pastGPSPositions.append((lat, lon))
-        #        print("GPS RECEIVED!!")        
+        counter = counter + 1
+        if(counter == 1):
+            print("READING GPS!!")
+            success, lat, lon = readGPS(session)
+            counter = 0
+            if(success):
+                print("SUCCESS!!" + str(lat) + " " + str(lon))
+                shared_data["currLat"] = lat
+                shared_data["currLong"] = lon
+                pastGPSPositions.append((lat, lon))
+                print("GPS RECEIVED!!")  
+            else:
+                print("FAIL")
+        print("Light:::", shared_data["lightOn"])
         if(shared_data["manualOverride"]):
-            left = float(shared_data["speedLeft"])
-            right = float(shared_data["speedRight"])
-            if(last_left != left):
-                last_left = left
-                # leftMotor.sendCommand(left)
-            if(last_right != right):
-                # rightMotor.sendCommand(right)
-                last_right = right
+            if(lastLight != shared_data["lightOn"]):
+                lastLight = shared_data["lightOn"]
+                if(lastLight):
+                    leftMotor.lightOn()
+                    print("TURNING THE LIGHT ON!!")
+                else:
+                    leftMotor.lightOff()
+                    
+            if(shared_data["onLand"]):
+                left = float(shared_data["speedLeft"])
+                right = float(shared_data["speedRight"])
+                if(last_ground_left != left):
+                    last_ground__left = left
+                    leftGroundMotor.sendCommand(left)
+                if(last_ground__right != right):
+                    rightGroundMotor.sendCommand(right)
+                    last_ground__right = right
+                if(last_left != 0.0):
+                    leftMotor.sendCommand(0.0)
+                    last_left = 0.0
+                if(last_right != 0.0):
+                    rightMotor.sendCommand(0.0)
+                    last_right = 0.0
+            else:
+                left = float(shared_data["speedLeft"])
+                right = float(shared_data["speedRight"])
+                if(last_left != left):
+                    last_left = left
+                    leftMotor.sendCommand(left)
+                if(last_right != right):
+                    rightMotor.sendCommand(right)
+                    last_right = right
+                if(last_ground_left != 0.0):
+                    leftGroundMotor.sendCommand(0.0)
+                    last_ground_left = 0.0
+                if(last_ground_right != 0.0):
+                    rightGroundMotor.sendCommand(0.0)
+                    last_ground_right = 0.0
+                    
         else:
-            
             distToTarget = calculate_distance(shared_data["target_lats"][0], shared_data["target_longs"][0], curr_lat, curr_long)
             if(distToTarget < 5):
                 test1 = shared_data["target_lats"]
@@ -248,8 +299,6 @@ def main(shared_data):
                 test2.pop()
                 shared_data["target_lats"] = test1
                 shared_data["target_longs"] = test2
-                
-                
                 
             targetCoordinates = (0, 0)
             if(len(shared_data["target_lats"]) > 0):
@@ -267,11 +316,8 @@ def main(shared_data):
                 #rightMotor.sendCommand(pwmValues[0])
                 #leftMotor.sendCommand(pwmValues[1])
             else:
-                test = 1
+                leftMotor.lightOn()
                 # LIGHTS ON PACKAGE ARRIVED!!
-                
-            
-
 
 import time
 from multiprocessing import Manager, Process
@@ -284,6 +330,7 @@ if __name__ == "__main__":
         shared_data = manager.dict()
         shared_data["manualOverride"] = True
         shared_data["onLand"] = False
+        shared_data["lightOn"] = False
         shared_data["command"] = "stop"
         shared_data["basicSpeed"] = 0
         shared_data["target_lats"] = collections.deque([0] * 5, maxlen=5)
@@ -295,6 +342,7 @@ if __name__ == "__main__":
         shared_data["targetLat"] = 0
         shared_data["targetLong"] = 0
         shared_data["batteryLevel"] = 100
+        shared_data["heading_string"] = "NNN 0"
         
         print(list(shared_data["target_lats"]))
         print(list(shared_data["target_longs"]))

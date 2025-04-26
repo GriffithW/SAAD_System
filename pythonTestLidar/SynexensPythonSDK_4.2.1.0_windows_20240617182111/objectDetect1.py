@@ -10,6 +10,32 @@ def PrintErrorCode(func_name, errorCode):
     error_name = error_map.get(errorCode, "Unknown Error")
     print(f"Error in {func_name}: {errorCode} ({error_name})")
 
+# def initialize_device():
+#     error = InitSDK()
+#     if error != SYErrorCode.SYERRORCODE_SUCCESS:
+#         PrintErrorCode("InitSDK", error)
+#         exit(1)
+#     nDeviceCount = c_int32()
+#     error = FindDevice(byref(nDeviceCount), None)
+#     if error != SYErrorCode.SYERRORCODE_SUCCESS or nDeviceCount.value <= 0:
+#         PrintErrorCode("FindDevice", error)
+#         UnInitSDK()
+#         exit(1)
+#     print(f"Found {nDeviceCount.value} device(s)")
+#     pDeviceInfo = (SYDeviceInfo * nDeviceCount.value)()
+#     error = FindDevice(nDeviceCount, pDeviceInfo)
+#     if error != SYErrorCode.SYERRORCODE_SUCCESS:
+#         PrintErrorCode("FindDevice - Fetch Info", error)
+#         UnInitSDK()
+#         exit(1)
+#     device_id = pDeviceInfo[0].m_nDeviceID
+#     error = OpenDevice(pDeviceInfo[0])
+#     if error != SYErrorCode.SYERRORCODE_SUCCESS:
+#         PrintErrorCode("OpenDevice", error)
+#         UnInitSDK()
+#         exit(1)
+#     print(f"Opened Device ID: {device_id}")
+#     return device_id, pDeviceInfo[0]
 def initialize_device():
     error = InitSDK()
     if error != SYErrorCode.SYERRORCODE_SUCCESS:
@@ -17,17 +43,27 @@ def initialize_device():
         exit(1)
     nDeviceCount = c_int32()
     error = FindDevice(byref(nDeviceCount), None)
-    if error != SYErrorCode.SYERRORCODE_SUCCESS or nDeviceCount.value <= 0:
+    if error != SYErrorCode.SYERRORCODE_SUCCESS:
         PrintErrorCode("FindDevice", error)
         UnInitSDK()
         exit(1)
-    print(f"Found {nDeviceCount.value} device(s)")
+    print(f"Device count: {nDeviceCount.value}")
+    if nDeviceCount.value <= 0:
+        print("No devices found")
+        UnInitSDK()
+        exit(1)
     pDeviceInfo = (SYDeviceInfo * nDeviceCount.value)()
     error = FindDevice(nDeviceCount, pDeviceInfo)
     if error != SYErrorCode.SYERRORCODE_SUCCESS:
         PrintErrorCode("FindDevice - Fetch Info", error)
         UnInitSDK()
         exit(1)
+    for i in range(nDeviceCount.value):
+        try:
+            name = pDeviceInfo[i].m_szDeviceName.decode('utf-8') if pDeviceInfo[i].m_szDeviceName else "Unnamed"
+        except Exception as e:
+            name = f"Unknown (Error: {str(e)})"
+        print(f"Device {i}: ID = {pDeviceInfo[i].m_nDeviceID}, Name = {name}")
     device_id = pDeviceInfo[0].m_nDeviceID
     error = OpenDevice(pDeviceInfo[0])
     if error != SYErrorCode.SYERRORCODE_SUCCESS:
@@ -76,7 +112,7 @@ def get_point_cloud(device_id, width=640, height=480):
     print("No depth frame found in frame_data")
     return None
 
-def downsample_point_cloud(points, voxel_size=0.001):
+def downsample_point_cloud(points, voxel_size=0.005):
     if points is None or len(points) == 0:
         return None
     min_bound = points.min(axis=0)
@@ -84,7 +120,7 @@ def downsample_point_cloud(points, voxel_size=0.001):
     unique_voxels, indices = np.unique(voxel_index, axis=0, return_index=True)
     return points[indices]
 
-def detect_objects(point_cloud, eps=.2, min_samples=10, depth_range=(0.1, 100.0), fov=(-45, 45)):
+def detect_objects(point_cloud, eps=.2, min_samples=5, depth_range=(0.0, 1000.0), fov=(-45, 45)):
     if point_cloud is None or len(point_cloud) == 0:
         return 0, []
     valid_mask = (point_cloud[:, 2] > depth_range[0]) & (point_cloud[:, 2] < depth_range[1])
@@ -93,7 +129,7 @@ def detect_objects(point_cloud, eps=.2, min_samples=10, depth_range=(0.1, 100.0)
     valid_points = point_cloud[valid_mask]
     if len(valid_points) < min_samples:
         return 0, []
-    downsampled_points = downsample_point_cloud(valid_points, voxel_size=0.05)
+    downsampled_points = downsample_point_cloud(valid_points, voxel_size=0.01)
     if downsampled_points is None or len(downsampled_points) < min_samples:
         return 0, []
     clustering = DBSCAN(eps=eps, min_samples=min_samples, n_jobs=-1).fit(downsampled_points)

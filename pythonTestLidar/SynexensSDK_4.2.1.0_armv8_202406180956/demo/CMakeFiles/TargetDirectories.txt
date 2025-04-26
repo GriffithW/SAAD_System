@@ -1,0 +1,3 @@
+/home/saad-sys/Downloads/SynexensSDK_4.2.1.0_armv8_202406180956/demo/CMakeFiles/SDKTest.dir
+/home/saad-sys/Downloads/SynexensSDK_4.2.1.0_armv8_202406180956/demo/CMakeFiles/edit_cache.dir
+/home/saad-sys/Downloads/SynexensSDK_4.2.1.0_armv8_202406180956/demo/CMakeFiles/rebuild_cache.dir
